@@ -1,146 +1,61 @@
-<!-- PASSWORTSCHUTZ - PwC Design Orange/Grau -->
-<div id="login-screen" style="
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #2d2d2d;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-">
-    <div style="
-        background: #ffffff;
-        padding: 3rem;
-        text-align: center;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        width: 380px;
-        border-top: 4px solid #FD5108;
-    ">
-        <!-- PwC Logo -->
-        <div style="margin-bottom: 1.5rem;">
-            <span style="
-                font-size: 2.2rem;
-                font-weight: 700;
-                color: #3d3d3d;
-                letter-spacing: -1px;
-            ">pw</span><span style="
-                font-size: 2.2rem;
-                font-weight: 700;
-                color: #FD5108;
-            ">C</span>
-        </div>
+<!-- PASSWORTSCHUTZ -->
+<div id="login-screen" style="display:flex;justify-content:center;align-items:center;height:100vh;position:fixed;top:0;left:0;width:100%;z-index:9999;background:#1a1a1a">
+  <div style="width:100%;max-width:400px;background:#fff;box-shadow:0 24px 64px rgba(0,0,0,.45)">
 
-        <h2 style="
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #3d3d3d;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.02em;
-        ">Geschützter Bereich</h2>
-
-        <p style="
-            color: #8a8a8a;
-            font-size: 0.875rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        ">Bitte geben Sie Ihr Passwort ein, um fortzufahren.</p>
-
-        <input 
-            type="password" 
-            id="pwd" 
-            placeholder="Passwort" 
-            style="
-                padding: 12px 16px;
-                width: 100%;
-                border: 1px solid #d6d6d6;
-                border-bottom: 2px solid #acacac;
-                font-size: 0.95rem;
-                display: block;
-                margin: 0 auto 1rem;
-                box-sizing: border-box;
-                outline: none;
-                color: #3d3d3d;
-                background: #f7f7f7;
-                transition: border 0.2s, background 0.2s;
-            "
-            onfocus="
-                this.style.borderBottomColor='#FD5108';
-                this.style.background='#ffffff';
-            "
-            onblur="
-                this.style.borderBottomColor='#acacac';
-                this.style.background='#f7f7f7';
-            "
-        >
-
-        <button 
-            onclick="checkPwd()" 
-            style="
-                padding: 12px 0;
-                width: 100%;
-                background: #FD5108;
-                color: white;
-                border: none;
-                font-size: 0.95rem;
-                font-weight: 600;
-                cursor: pointer;
-                letter-spacing: 0.06em;
-                text-transform: uppercase;
-                transition: background 0.2s;
-            "
-            onmouseover="this.style.background='#d94400';"
-            onmouseout="this.style.background='#FD5108';"
-        >
-            Anmelden
-        </button>
-
-        <p id="err" style="
-            color: #FD5108;
-            display: none;
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            font-weight: 400;
-        ">
-            ⚠️ Falsches Passwort. Bitte versuchen Sie es erneut.
-        </p>
-
-        <div style="
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #ebebeb;
-        ">
-            <p style="
-                font-size: 0.72rem;
-                color: #b0b0b0;
-                margin: 0;
-            ">© 2026 PricewaterhouseCoopers. Vertraulich.</p>
-        </div>
+    <!-- Oranger Header -->
+    <div style="background:#FD5108;padding:2.5rem 2.5rem 2rem;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-40px;bottom:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.07)"></div>
+      <div style="position:absolute;right:30px;top:-30px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.05)"></div>
+      <div style="margin-bottom:1.75rem">
+        <img src="https://www.pwc.com/etc.clientlibs/pwc/clientlibs/rebrand-clientlibs/components-colors/resources/images/slim-header-v2/PwC-logo.svg" style="height:26px;filter:brightness(0) invert(1)" alt="PwC">
+      </div>
+      <h2 style="font-family:Georgia,serif;color:#fff;font-size:1.4rem;margin-bottom:.35rem">Geschützter Bereich</h2>
+      <p style="color:rgba(255,255,255,.75);font-size:.82rem;line-height:1.5">Strategic Workforce Planning – Zielbilder & Blaupausen.<br>Bitte Passwort eingeben, um fortzufahren.</p>
     </div>
+
+    <!-- Body -->
+    <div style="padding:2rem 2.5rem 2.5rem">
+      <label style="display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#1a1a1a;margin-bottom:.45rem">Passwort</label>
+      <input type="password" id="pwd" placeholder="••••••••••"
+        style="width:100%;padding:.75rem 1rem;border:1px solid #EEEFF1;border-bottom:2px solid #ccc;background:#F5F7F8;font-size:.9rem;font-family:Arial,sans-serif;color:#1a1a1a;outline:none;margin-bottom:1.25rem;border-radius:0;display:block"
+        onfocus="this.style.borderBottomColor='#FD5108';this.style.background='#fff'"
+        onblur="this.style.borderBottomColor='#ccc';this.style.background='#F5F7F8'">
+      <button onclick="checkPwd()"
+        style="width:100%;padding:.85rem;background:#FD5108;color:#fff;border:none;font-size:.78rem;font-weight:700;font-family:Arial,sans-serif;cursor:pointer;letter-spacing:.12em;text-transform:uppercase"
+        onmouseover="this.style.background='#d94400'"
+        onmouseout="this.style.background='#FD5108'">
+        Anmelden
+      </button>
+      <div id="err" style="display:none;margin-top:1rem;padding:.65rem .85rem;background:#FFF5F0;border-left:3px solid #FD5108;font-size:.8rem;color:#FD5108;font-style:italic">
+        Falsches Passwort – bitte erneut versuchen.
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="padding:.9rem 2.5rem;border-top:1px solid #EEEFF1;display:flex;justify-content:space-between;align-items:center;font-size:.68rem;color:#aaa">
+      <span>© 2026 PricewaterhouseCoopers</span>
+      <span style="color:#EEEFF1">|</span>
+      <span>Vertraulich</span>
+    </div>
+
+  </div>
 </div>
 
 <script>
-function checkPwd() {
-    const input = document.getElementById("pwd");
-    const err   = document.getElementById("err");
-
-    if (input.value === "SPP!2o26!") {
-        document.getElementById("login-screen").style.display = "none";
-        err.style.display = "none";
-    } else {
-        err.style.display = "block";
-        input.style.borderBottomColor = "#FD5108";
-        input.value = "";
-        input.focus();
-    }
+function checkPwd(){
+  const v=document.getElementById('pwd').value;
+  const e=document.getElementById('err');
+  if(v==='SPP!2o26!'){
+    document.getElementById('login-screen').style.display='none';
+    e.style.display='none';
+  } else {
+    e.style.display='block';
+    const i=document.getElementById('pwd');
+    i.value='';i.focus();
+    i.style.borderBottomColor='#FD5108';
+  }
 }
-
-document.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") checkPwd();
-});
+document.addEventListener('keypress',function(e){if(e.key==='Enter')checkPwd();});
 </script>
 
 <!DOCTYPE html>
