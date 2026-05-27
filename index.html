@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategic Workforce Planning - MVP Demo | PwC</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;font-size:1rem;line-height:1.6;color:#000;background:#fff}
+h1,h2,h3,h4,h5{font-family:Georgia,serif;font-weight:700;line-height:1.2}
+.sticky-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:#fff;border-bottom:1px solid #EEEFF1;display:flex;align-items:center;padding:0 2rem;height:56px}
+.sticky-nav img{height:28px;margin-right:1rem}
+.nav-title{font-family:Georgia,serif;font-size:.95rem;color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-right:auto}
+.nav-links{display:flex;gap:.25rem}
+.nav-links button{padding:.5rem .75rem;font-size:.78rem;font-weight:700;border:none;background:transparent;border-bottom:3px solid transparent;cursor:pointer;font-family:Arial,sans-serif;color:#000}
+.nav-links button.active{border-bottom-color:#FD5108;color:#FD5108}
+.nav-links button:hover{color:#FD5108}
+.wrap{max-width:1200px;margin:0 auto;padding:80px 2rem 4rem}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.cover-top{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:#FD5108;font-weight:700;margin-bottom:1.5rem}
+.cover-title{font-size:2.5rem;color:#000;margin-bottom:1rem;max-width:900px;line-height:1.2}
+.cover-subtitle{font-size:1.05rem;color:#666;max-width:800px;line-height:1.7;margin-bottom:1.5rem}
+.cover-footer{font-size:.85rem;color:#666;border-top:1px solid #EEEFF1;padding-top:1rem}
+.section-label{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:#FD5108;font-weight:700;margin-bottom:.5rem}
+.section-title{font-size:2rem;color:#000;margin-bottom:.75rem}
+.section-finding{font-style:italic;color:#666;font-size:1rem;margin-bottom:1.5rem;max-width:900px;line-height:1.6}
+.orange-rule{width:60px;height:3px;background:#FD5108;border:none;margin-bottom:2rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:2.5rem}
+.kpi-card{background:#fff;border:1px solid #EEEFF1;border-top:4px solid #FD5108;padding:1.5rem}
+.kpi-label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#1a1a1a;font-weight:700;margin-bottom:.5rem}
+.kpi-value{font-family:Georgia,serif;font-size:2.2rem;font-weight:700;color:#FD5108;margin-bottom:.5rem;line-height:1.1}
+.kpi-desc{font-size:.85rem;color:#666;line-height:1.4}
+.data-table{width:100%;border-collapse:collapse;margin-bottom:2rem;font-size:.85rem}
+.data-table th{background:#1a1a1a;color:#fff;text-align:left;padding:.75rem 1rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.data-table td{padding:.7rem 1rem;border-bottom:1px solid #EEEFF1;vertical-align:middle}
+.data-table tr:nth-child(even){background:#FFF8F0}
+.badge{display:inline-block;padding:.2rem .7rem;border-radius:12px;font-size:.68rem;font-weight:700;text-transform:uppercase}
+.badge-wave{background:#FD5108;color:#fff;padding:.15rem .5rem;border-radius:10px;font-size:.65rem}
+.badge-critical{background:#FFEBEE;color:#C62828}
+.badge-high{background:#FFF3E0;color:#E65100}
+.badge-medium{background:#E3F2FD;color:#1565C0}
+.badge-low{background:#E8F5E9;color:#059669}
+.progress-bar{width:60px;height:8px;background:#eee;border-radius:4px;display:inline-block;vertical-align:middle;margin-right:6px}
+.progress-fill{height:100%;border-radius:4px}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem}
+.scenario-card{padding:1.5rem;border:1px solid #EEEFF1;text-align:center}
+.scenario-card.ambitious{border-top:3px solid #FD5108}
+.scenario-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem}
+.scenario-value{font-family:Georgia,serif;font-size:1.8rem;font-weight:700;margin-bottom:.5rem}
+.scenario-desc{font-size:.8rem;color:#666}
+.scenario-footer{font-size:.75rem;color:#666;border-top:1px solid #EEEFF1;padding-top:.75rem;margin-top:.75rem}
+.wave-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:2.5rem}
+.wave-card{border:1px solid #EEEFF1;overflow:hidden;background:#fff}
+.wave-header{padding:1.25rem 1.5rem;border-bottom:1px solid #EEEFF1;background:#F5F7F8;display:flex;justify-content:space-between;align-items:flex-start}
+.wave-badge{display:inline-block;background:#FD5108;color:#fff;font-size:.7rem;font-weight:700;padding:.2rem .75rem;border-radius:12px;margin-right:.75rem}
+.wave-name{font-family:Georgia,serif;font-size:1.1rem;font-weight:700}
+.wave-subtitle{font-size:.8rem;color:#666;margin-top:.25rem}
+.wave-duration{font-family:Georgia,serif;font-size:1.1rem;font-weight:700;color:#FD5108}
+.wave-body{padding:1.25rem 1.5rem}
+.wave-body ul{list-style:none;padding:0;margin:0 0 1rem 0}
+.wave-body ul li{padding:.3rem 0;font-size:.85rem;color:#666;padding-left:1rem;position:relative;line-height:1.4}
+.wave-body ul li::before{content:"\2192";position:absolute;left:0;color:#FD5108}
+.wave-meta{display:flex;gap:1.5rem;padding-top:.75rem;border-top:1px solid #EEEFF1;font-size:.78rem;color:#666}
+.wave-meta strong{color:#1a1a1a}
+.timeline-bar{display:flex;align-items:center;margin-bottom:.75rem}
+.timeline-label{width:120px;font-size:.78rem;font-weight:700;color:#1a1a1a;flex-shrink:0}
+.timeline-track{flex:1;position:relative;height:32px;background:#f5f5f5;border-radius:4px}
+.timeline-fill{position:absolute;height:100%;background:#FD5108;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;font-weight:700}
+.dark-block{background:#1a1a1a;padding:2.5rem;margin-bottom:2rem}
+.dark-block h3{font-family:Georgia,serif;color:#FD5108;font-size:1.4rem;margin-bottom:1rem}
+.dark-block p{color:#fff;font-size:1rem;line-height:1.7}
+.hint-block{background:#FFF5F0;border-left:5px solid #FD5108;padding:1.5rem 2rem;font-size:.9rem;color:#666;font-style:italic;margin-bottom:2rem}
+.trend-item{display:flex;gap:1.25rem;background:#F5F7F8;border-left:3px solid #FD5108;padding:1.25rem 1.5rem;align-items:flex-start;margin-bottom:1rem}
+.trend-item.medium{border-left-color:#FF9800}
+.trend-item.low{border-left-color:#EEEFF1}
+.trend-score{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:#FD5108;min-width:3.5rem;line-height:1;text-align:center}
+.trend-content{flex:1}
+.trend-content h4{font-size:1.05rem;margin-bottom:.35rem}
+.trend-meta{font-size:.75rem;color:#666}
+.trend-meta strong.high{color:#FD5108}
+.trend-meta strong.med{color:#E65100}
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2.5rem}
+.insight-card{border:1px solid #EEEFF1;border-top:4px solid #FD5108;padding:1.5rem;background:#fff}
+.insight-num{font-family:Georgia,serif;font-size:2rem;color:#FD5108;font-weight:700;margin-bottom:.5rem}
+.insight-card p{font-size:.95rem;line-height:1.5;color:#1a1a1a}
+.insight-source{font-size:.75rem;color:#666;margin-top:.75rem;font-style:italic}
+.blueprint-card{border:1px solid #EEEFF1;margin-bottom:2rem;overflow:hidden}
+.blueprint-header{display:flex;justify-content:space-between;align-items:flex-start;padding:1.5rem 2rem;border-bottom:1px solid #EEEFF1;background:#F5F7F8}
+.blueprint-score{font-family:Georgia,serif;font-size:2rem;color:#FD5108;font-weight:700;line-height:1;text-align:center}
+.blueprint-body{display:grid;grid-template-columns:1fr 1fr}
+.blueprint-col{padding:1.5rem 2rem}
+.blueprint-col:first-child{border-right:1px solid #EEEFF1}
+.blueprint-col h5{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.blueprint-col h5.today{color:#1a1a1a}
+.blueprint-col h5.target{color:#FD5108}
+.skill-bar{margin-bottom:.75rem}
+.skill-bar-header{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:4px}
+.skill-bar-track{height:6px;background:#eee;border-radius:3px}
+.skill-bar-fill{height:100%;border-radius:3px}
+.skill-bar-fill.gray{background:#666}
+.skill-bar-fill.orange{background:#FD5108}
+.blueprint-footer{border-top:1px solid #EEEFF1;padding:1.25rem 2rem;border-left:4px solid #FD5108;background:#FFFAF7;font-size:.9rem;color:#666;font-style:italic}
+.measure-table{width:100%;border-collapse:collapse;font-size:.85rem;margin-bottom:2.5rem}
+.measure-table th{background:#1a1a1a;color:#fff;text-align:left;padding:.75rem 1rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.measure-table td{padding:.7rem 1rem;border-bottom:1px solid #EEEFF1}
+.measure-table tr:nth-child(even){background:#FFF8F0}
+.cat-badge{display:inline-block;padding:.2rem .6rem;border-radius:12px;font-size:.68rem;font-weight:700;color:#fff}
+.cta-box{background:#FFF5F0;border-left:5px solid #FD5108;padding:2rem;margin-bottom:2.5rem}
+.cta-box h4{font-family:Georgia,serif;font-size:1.3rem;margin-bottom:1rem}
+.cta-box p{font-size:.95rem;line-height:1.6;margin-bottom:.75rem}
+.cta-box ul{list-style:none;padding:0;margin:0 0 1rem 0}
+.cta-box ul li{padding:.35rem 0;font-size:.9rem;padding-left:1.25rem;position:relative;line-height:1.5}
+.cta-box ul li::before{content:"\2713";position:absolute;left:0;color:#FD5108;font-weight:700}
+footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px solid #EEEFF1}
+@media(max-width:900px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr 1fr}.wave-grid{grid-template-columns:1fr}.blueprint-body{grid-template-columns:1fr}}
+@media(max-width:600px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr}.nav-links button{font-size:.7rem;padding:.4rem .5rem}}
+</style>
+</head>
+<body>
+
+<nav class="sticky-nav">
+<img src="https://www.pwc.com/etc.clientlibs/pwc/clientlibs/rebrand-clientlibs/components-colors/resources/images/slim-header-v2/PwC-logo.svg" alt="PwC">
+<span class="nav-title">Strategic Workforce Planning - MVP Demo</span>
+<div class="nav-links">
+<button class="active" onclick="showTab('overview')">Gesamtblick</button>
+<button onclick="showTab('waves')">Wellenmodell</button>
+<button onclick="showTab('ki-impact')">KI-Impact</button>
+<button onclick="showTab('blueprints')">Zielbilder</button>
+<button onclick="showTab('trends')">Trendradar</button>
+<button onclick="showTab('measures')">Maßnahmen</button>
+</div>
+</nav>
+
+<div class="wrap">
+
+<!-- COVER -->
+<div style="padding:3rem 0 2rem">
+<div class="cover-top">PwC People & Organisation - Strategische Personalplanung - Demo</div>
+<h1 class="cover-title">MVP zur Steuerung der personellen Implikationen von Transformationsvorhaben</h1>
+<p class="cover-subtitle">Ein datengestützter, treiberbasierter Ansatz zur Identifikation zukünftiger Personalbedarfe, Skill-Gaps und strategischer Maßnahmen - mit integrierter Betrachtung von KI- und Technologieimplikationen auf Basis der bestehenden Jobarchitektur.</p>
+<div class="cover-footer">Illustrativ - Dummy-Daten | Zeithorizont bis 2030 | 14 Jobfamilien, 38 Jobcluster, 130 Jobprofile | ca. 8.200 FTE</div>
+</div>
+
+<!-- OVERVIEW TAB -->
+<div id="tab-overview" class="tab-content active">
+<div class="section-label">Modul 01</div>
+<h2 class="section-title">Gesamtblick Personalkörper</h2>
+<p class="section-finding">Treiberbasierte Gesamtsicht auf alle 14 Jobfamilien mit Supply-Demand-Modellierung, Gap-Identifikation und Priorisierung der kritischsten Handlungsfelder.</p>
+<hr class="orange-rule">
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-label">Aktuelle FTE</div><div class="kpi-value">8.200</div><div class="kpi-desc">Gesamter Personalkörper 2024</div></div>
+<div class="kpi-card"><div class="kpi-label">Progn. Bedarf 2030</div><div class="kpi-value">7.150</div><div class="kpi-desc">Treiberbasierte Modellierung</div></div>
+<div class="kpi-card"><div class="kpi-label">Netto-Delta</div><div class="kpi-value">-1.050</div><div class="kpi-desc">Reduktion durch Transformation</div></div>
+<div class="kpi-card"><div class="kpi-label">Neue Rollen</div><div class="kpi-value">+580</div><div class="kpi-desc">Aufbau in Zukunftsfeldern</div></div>
+</div>
+
+<h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:1rem">Gap-Analyse nach Jobfamilien</h3>
+<table class="data-table">
+<thead><tr><th>Jobfamilie</th><th>Welle</th><th>Aktuell</th><th>Bedarf 2030</th><th>Delta</th><th>Autom.-Pot.</th><th>Kritikalität</th></tr></thead>
+<tbody>
+<tr><td><strong>Kundenservice & Vertragsbearbeitung</strong></td><td><span class="badge-wave">1</span></td><td>1.420</td><td>980</td><td style="color:#FD5108;font-weight:700">-440</td><td><span class="progress-bar"><span class="progress-fill" style="width:48%;background:#FD5108"></span></span>48%</td><td><span class="badge badge-critical">Sehr hoch</span></td></tr>
+<tr><td><strong>Schaden & Leistung</strong></td><td><span class="badge-wave">1</span></td><td>1.180</td><td>820</td><td style="color:#FD5108;font-weight:700">-360</td><td><span class="progress-bar"><span class="progress-fill" style="width:42%;background:#FD5108"></span></span>42%</td><td><span class="badge badge-critical">Sehr hoch</span></td></tr>
+<tr><td><strong>HR</strong></td><td><span class="badge-wave">1</span></td><td>280</td><td>250</td><td style="color:#FD5108;font-weight:700">-30</td><td><span class="progress-bar"><span class="progress-fill" style="width:22%;background:#FF9800"></span></span>22%</td><td><span class="badge badge-medium">Mittel</span></td></tr>
+<tr><td><strong>Operativer Support</strong></td><td><span class="badge-wave">1</span></td><td>420</td><td>320</td><td style="color:#FD5108;font-weight:700">-100</td><td><span class="progress-bar"><span class="progress-fill" style="width:38%;background:#FF9800"></span></span>38%</td><td><span class="badge badge-medium">Mittel</span></td></tr>
+<tr><td><strong>Underwriting & Bestandsmanagement</strong></td><td><span class="badge-wave">2</span></td><td>680</td><td>620</td><td style="color:#FD5108;font-weight:700">-60</td><td><span class="progress-bar"><span class="progress-fill" style="width:18%;background:#059669"></span></span>18%</td><td><span class="badge badge-high">Hoch</span></td></tr>
+<tr><td><strong>Strategie, Projekt- & Prozessmanagement</strong></td><td><span class="badge-wave">2</span></td><td>310</td><td>340</td><td style="color:#059669;font-weight:700">+30</td><td><span class="progress-bar"><span class="progress-fill" style="width:12%;background:#059669"></span></span>12%</td><td><span class="badge badge-medium">Mittel</span></td></tr>
+<tr><td><strong>Vertrieb</strong></td><td><span class="badge-wave">3</span></td><td>1.100</td><td>850</td><td style="color:#FD5108;font-weight:700">-250</td><td><span class="progress-bar"><span class="progress-fill" style="width:35%;background:#FF9800"></span></span>35%</td><td><span class="badge badge-high">Hoch</span></td></tr>
+<tr><td><strong>Marketing & Kommunikation</strong></td><td><span class="badge-wave">3</span></td><td>190</td><td>220</td><td style="color:#059669;font-weight:700">+30</td><td><span class="progress-bar"><span class="progress-fill" style="width:20%;background:#059669"></span></span>20%</td><td><span class="badge badge-low">Niedrig</span></td></tr>
+<tr><td><strong>Finanzen</strong></td><td><span class="badge-wave">3</span></td><td>540</td><td>480</td><td style="color:#FD5108;font-weight:700">-60</td><td><span class="progress-bar"><span class="progress-fill" style="width:28%;background:#FF9800"></span></span>28%</td><td><span class="badge badge-medium">Mittel</span></td></tr>
+<tr><td><strong>Produkte & Services</strong></td><td><span class="badge-wave">3</span></td><td>310</td><td>380</td><td style="color:#059669;font-weight:700">+70</td><td><span class="progress-bar"><span class="progress-fill" style="width:10%;background:#059669"></span></span>10%</td><td><span class="badge badge-high">Hoch</span></td></tr>
+<tr><td><strong>IT</strong></td><td><span class="badge-wave">4</span></td><td>890</td><td>1.280</td><td style="color:#059669;font-weight:700">+390</td><td><span class="progress-bar"><span class="progress-fill" style="width:8%;background:#059669"></span></span>8%</td><td><span class="badge badge-critical">Sehr hoch</span></td></tr>
+<tr><td><strong>Mathematik & Analytics</strong></td><td><span class="badge-wave">4</span></td><td>180</td><td>450</td><td style="color:#059669;font-weight:700">+270</td><td><span class="progress-bar"><span class="progress-fill" style="width:5%;background:#059669"></span></span>5%</td><td><span class="badge badge-critical">Sehr hoch</span></td></tr>
+<tr><td><strong>Governance</strong></td><td><span class="badge-wave">4</span></td><td>210</td><td>260</td><td style="color:#059669;font-weight:700">+50</td><td><span class="progress-bar"><span class="progress-fill" style="width:15%;background:#059669"></span></span>15%</td><td><span class="badge badge-high">Hoch</span></td></tr>
+<tr><td><strong>Führung</strong></td><td><span class="badge-wave">4</span></td><td>490</td><td>500</td><td style="color:#059669;font-weight:700">+10</td><td><span class="progress-bar"><span class="progress-fill" style="width:5%;background:#059669"></span></span>5%</td><td><span class="badge badge-low">Niedrig</span></td></tr>
+</tbody>
+</table>
+
+<h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:1rem">Szenariomodellierung</h3>
+<div class="scenario-grid">
+<div class="scenario-card"><div class="scenario-label" style="color:#1a1a1a">Konservativ</div><div class="scenario-value" style="color:#1a1a1a">-8%</div><div class="scenario-desc">Netto-FTE-Reduktion bis 2030</div><div class="scenario-footer">+320 neue Rollen | 1.200 Reskilling</div></div>
+<div class="scenario-card"><div class="scenario-label" style="color:#b8860b">Base Case</div><div class="scenario-value" style="color:#b8860b">-15%</div><div class="scenario-desc">Netto-FTE-Reduktion bis 2030</div><div class="scenario-footer">+580 neue Rollen | 2.100 Reskilling</div></div>
+<div class="scenario-card ambitious"><div class="scenario-label" style="color:#FD5108">Ambitioniert</div><div class="scenario-value" style="color:#FD5108">-22%</div><div class="scenario-desc">Netto-FTE-Reduktion bis 2030</div><div class="scenario-footer">+850 neue Rollen | 3.200 Reskilling</div></div>
+</div>
+<p style="font-size:.75rem;color:#666;font-style:italic">Illustrativ, keine Prognose. Szenarien basieren auf unterschiedlichen Annahmen zu Automatisierungsgeschwindigkeit und strategischer Ambition.</p>
+</div>
+
+<!-- WAVES TAB -->
+<div id="tab-waves" class="tab-content">
+<div class="section-label">Wellenlogik</div>
+<h2 class="section-title">Wellenmodell der Strategischen Personalplanung</h2>
+<p class="section-finding">Umsetzung in 4 Wellen auf Basis der Jobarchitektur mit 14 Jobfamilien, 38 Jobclustern und 130 Jobprofilen - priorisiert nach strategischer Relevanz und operativem Volumen.</p>
+<hr class="orange-rule">
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-label">Anzahl Wellen</div><div class="kpi-value">4</div><div class="kpi-desc">Sequenzielle Umsetzung</div></div>
+<div class="kpi-card"><div class="kpi-label">Zeitrahmen</div><div class="kpi-value">4-6 Wo.</div><div class="kpi-desc">Pro Welle (Welle 1: 6 Wochen)</div></div>
+<div class="kpi-card"><div class="kpi-label">Jobarchitektur</div><div class="kpi-value">14/38/130</div><div class="kpi-desc">Familien / Cluster / Profile</div></div>
+<div class="kpi-card"><div class="kpi-label">Deadline</div><div class="kpi-value">Okt. 2026</div><div class="kpi-desc">Managementfähige Ergebnisse</div></div>
+</div>
+
+<div class="wave-grid">
+<div class="wave-card">
+<div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 1</span><span class="wave-name">Pilot</span></div><div class="wave-subtitle">Prozess- und volumenstarke Jobfamilien sowie Zentralfunktion</div></div><div style="text-align:right"><div style="font-size:.65rem;color:#666;text-transform:uppercase">Dauer</div><div class="wave-duration">6 Wochen</div></div></div>
+<div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Kundenservice & Vertragsbearbeitung (1/2)</li><li>Schaden & Leistung</li><li>HR</li><li>Operativer Support (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>6</strong></div><div>Profile: <strong>~8</strong></div><div>Start: <strong>KW 24 (Juni 2026)</strong></div></div></div>
+</div>
+<div class="wave-card">
+<div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 2</span><span class="wave-name">Operatives Kerngeschäft</span></div><div class="wave-subtitle">Profitabilitäts- und risikokritische Kernfunktionen</div></div><div style="text-align:right"><div style="font-size:.65rem;color:#666;text-transform:uppercase">Dauer</div><div class="wave-duration">4 Wochen</div></div></div>
+<div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Underwriting & Bestandsmanagement</li><li>Kundenservice & Vertragsbearbeitung (2/2)</li><li>Strategie, Projekt- & Prozessmanagement (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>5</strong></div><div>Profile: <strong>~15</strong></div><div>Start: <strong>KW 32 (August 2026)</strong></div></div></div>
+</div>
+<div class="wave-card">
+<div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 3</span><span class="wave-name">Markt & Steuerung</span></div><div class="wave-subtitle">Marktnahe und steuernde Funktionen</div></div><div style="text-align:right"><div style="font-size:.65rem;color:#666;text-transform:uppercase">Dauer</div><div class="wave-duration">4 Wochen</div></div></div>
+<div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Vertrieb</li><li>Marketing & Kommunikation</li><li>Finanzen</li><li>Produkte & Services (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>8</strong></div><div>Profile: <strong>~22</strong></div><div>Start: <strong>KW 36 (September 2026)</strong></div></div></div>
+</div>
+<div class="wave-card">
+<div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 4</span><span class="wave-name">Strategie & Zukunft</span></div><div class="wave-subtitle">Transformatorische Enabler-Funktionen</div></div><div style="text-align:right"><div style="font-size:.65rem;color:#666;text-transform:uppercase">Dauer</div><div class="wave-duration">4 Wochen</div></div></div>
+<div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>IT</li><li>Mathematik & Analytics</li><li>Governance</li><li>Führung</li><li>Strategie, Projekt- & Prozessmanagement (2/2)</li><li>Produkte & Services (2/2)</li><li>Operativer Support (2/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>8</strong></div><div>Profile: <strong>~43</strong></div><div>Start: <strong>KW 40 (Oktober 2026)</strong></div></div></div>
+</div>
+</div>
+
+<h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:1rem">Zeitliche Einordnung (Juni - Oktober 2026)</h3>
+<div style="background:#fff;border:1px solid #EEEFF1;padding:2rem;margin-bottom:2rem">
+<div style="display:flex;gap:4px;margin-bottom:1rem"><div style="flex:1;text-align:center;font-size:.75rem;font-weight:700;color:#666;padding:.4rem;border-bottom:2px solid #EEEFF1">Juni</div><div style="flex:1;text-align:center;font-size:.75rem;font-weight:700;color:#666;padding:.4rem;border-bottom:2px solid #EEEFF1">Juli</div><div style="flex:1;text-align:center;font-size:.75rem;font-weight:700;color:#666;padding:.4rem;border-bottom:2px solid #EEEFF1">August</div><div style="flex:1;text-align:center;font-size:.75rem;font-weight:700;color:#666;padding:.4rem;border-bottom:2px solid #EEEFF1">September</div><div style="flex:1;text-align:center;font-size:.75rem;font-weight:700;color:#666;padding:.4rem;border-bottom:2px solid #EEEFF1">Oktober</div></div>
+<div class="timeline-bar"><div class="timeline-label">Welle 1</div><div class="timeline-track"><div class="timeline-fill" style="left:0;width:30%">6 Wochen</div></div></div>
+<div class="timeline-bar"><div class="timeline-label">Welle 2</div><div class="timeline-track"><div class="timeline-fill" style="left:35%;width:20%">4 Wochen</div></div></div>
+<div class="timeline-bar"><div class="timeline-label">Welle 3</div><div class="timeline-track"><div class="timeline-fill" style="left:55%;width:20%">4 Wochen</div></div></div>
+<div class="timeline-bar"><div class="timeline-label">Welle 4</div><div class="timeline-track"><div class="timeline-fill" style="left:75%;width:20%">4 Wochen</div></div></div>
+<div style="font-size:.75rem;color:#666;margin-top:1rem;margin-left:120px"><span style="color:#E65100;font-weight:700">&#9670;</span> Nach Welle 1: Anpassung Methodik/Toolbox (Learnings)</div>
+</div>
+
+<div class="dark-block">
+<h3>Übergreifendes Ziel aller Wellen</h3>
+<p>Analyse der Kompetenzanforderungen durch Trends und Treiber, wie neue Technologien (KI, Analytics) sowie des Potenzials zur Erreichung von Strategiezielen und Transformationsvorhaben. In Welle 1 zusätzlich: Erprobung der Methodik und Ableitung von Learnings für die Folgewellen.</p>
+</div>
+
+<div class="hint-block">Hinweis: Für Welle 1 ist ein Zeitraum von 6 Wochen vorgesehen, ab Welle 2 eine Umsetzungsdauer von 4 Wochen pro Welle. Die Evaluierung der Zeitschiene erfolgt nach Abschluss der Welle 1.</div>
+</div>
+
+<!-- KI-IMPACT TAB -->
+<div id="tab-ki-impact" class="tab-content">
+<div class="section-label">Modul 02</div>
+<h2 class="section-title">KI-Impact auf Jobprofile</h2>
+<p class="section-finding">Systematische Analyse der Automatisierungspotenziale durch GenAI und klassische KI - aufgeschlüsselt nach Aufgabenclustern und Zeithorizont.</p>
+<hr class="orange-rule">
+
+<h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:1rem">KI-Implikationen nach Aufgabencluster</h3>
+<table class="data-table">
+<thead><tr><th>Aufgabencluster</th><th>Autom.-Potenzial</th><th>Zeithorizont</th><th>FTE-Auswirkung</th><th>Technologie</th></tr></thead>
+<tbody>
+<tr><td><strong>Datenerfassung & -pflege</strong></td><td><span class="progress-bar"><span class="progress-fill" style="width:90%;background:#FD5108"></span></span>90%</td><td>2025</td><td style="color:#FD5108;font-weight:700">-54% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
+<tr><td><strong>Dokumentenprüfung</strong></td><td><span class="progress-bar"><span class="progress-fill" style="width:85%;background:#FD5108"></span></span>85%</td><td>2025-2026</td><td style="color:#FD5108;font-weight:700">-51% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
+<tr><td><strong>Routineanfragen Kunden</strong></td><td><span class="progress-bar"><span class="progress-fill" style="width:78%;background:#FD5108"></span></span>78%</td><td>2025-2027</td><td style="color:#FD5108;font-weight:700">-47% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
+<tr><td><strong>Schadensmeldung Erstaufnahme</strong></td><td><span class="progress-bar"><span class="progress-fill" style="width:72%;background:#FD5108"></span></span>72%</td><td>2025-2026</td><td style="color:#FD5108;font-weight:700">-43% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
+<tr><td><strong>Berichtserstellung</strong></td><td><span class="progress-bar"><span class="progress-fill" style="width:70%;background:#FF9800"></span></span>70%</td><td>2025-2026</td><td style="color:#FD5108;font-weight:700">-42% FTE</td><td style="color:#666;font-size:.8rem">GenAI + ML</td></tr>
+<tr><td><strong>Risikobewertung Standard</strong></td><td><span class="progress-bar"><span class="progress-fill" style="width:65%;background:#FF9800"></span></span>65%</td><td>2026-2027</td><td style="color:#FD5108;font-weight:700">-39% FTE</td><td style="color:#666;font-size:.8rem">GenAI + ML</td></tr>
+<tr><td><strong>Vertragserstellung</strong></td><td><span class="progress-bar"><span class="progress-fill" style="width:60%;background:#FF9800"></span></span>60%</td><td>2026-2027</td><td style="color:#FD5108;font-weight:700">-36% FTE</td><td style="color:#666;font-size:.8rem">GenAI + ML</td></tr>
+<tr><td><strong>Compliance-Monitoring</strong></td><td><span class="progress-bar"><span class="progress-fill" style="width:55%;background:#FF9800"></span></span>55%</td><td>2026-2028</td><td style="color:#FD5108;font-weight:700">-33% FTE</td><td style="color:#666;font-size:.8rem">GenAI + ML</td></tr>
+</tbody>
+</table>
+
+<div class="dark-block">
+<h3>Strategische Implikationen der KI-Analyse</h3>
+<p><strong style="color:#fff">Kernerkenntnis:</strong> Rund 35-45% der heutigen Aufgaben in operativen Jobfamilien weisen ein hohes Automatisierungspotenzial durch GenAI auf. <strong style="color:#fff">Konsequenz:</strong> Der Personalkörper muss nicht nur quantitativ angepasst werden - es ergibt sich ein fundamentaler Shift im Skill-Mix hin zu Steuerungs-, Analyse- und Technologiekompetenzen. <strong style="color:#fff">Handlungsdruck:</strong> Ohne proaktive Reskilling-Programme entsteht ein kritisches Missverhältnis zwischen vorhandenen und benötigten Kompetenzen bereits ab 2026.</p>
+</div>
+</div>
+
+<!-- BLUEPRINTS TAB -->
+<div id="tab-blueprints" class="tab-content">
+<div class="section-label">Modul 03</div>
+<h2 class="section-title">Zielbilder & Blaupausen</h2>
+<p class="section-finding">Zukunftsgerichtete Zielbilder für priorisierte Jobfamilien - mit Skill-Mix-Transformation, Engpassprofilen und strukturellen Veränderungspfaden.</p>
+<hr class="orange-rule">
+
+<div class="blueprint-card">
+<div class="blueprint-header"><div><h4 style="font-family:Georgia,serif;font-size:1.15rem">Zielbild: Kundenservice & Vertragsbearbeitung</h4><div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-top:.25rem">Transformation bis 2030 | 1.420 FTE aktuell, 980 FTE Zielbild</div></div><div style="text-align:center;min-width:80px"><div class="blueprint-score">48%</div><div style="font-size:.65rem;color:#666;margin-top:4px">Autom.-Potenzial</div></div></div>
+<div class="blueprint-body">
+<div class="blueprint-col"><h5 class="today">Skill-Mix heute</h5><div class="skill-bar"><div class="skill-bar-header"><span>Telefonische Beratung</span><span style="color:#666">40%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:40%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Schriftbearbeitung</span><span style="color:#666">30%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:30%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Systemnavigation</span><span style="color:#666">20%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:20%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Beschwerdemanagement</span><span style="color:#666">10%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:10%"></div></div></div></div>
+<div class="blueprint-col"><h5 class="target">Skill-Mix Zielbild 2030</h5><div class="skill-bar"><div class="skill-bar-header"><span>KI-Steuerung & Eskalation</span><span style="color:#FD5108">30%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:30%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Komplexberatung</span><span style="color:#FD5108">25%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:25%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Customer Experience</span><span style="color:#FD5108">20%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:20%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Prozessoptimierung</span><span style="color:#FD5108">15%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:15%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Data Literacy</span><span style="color:#FD5108">10%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:10%"></div></div></div></div>
+</div>
+<div class="blueprint-footer">Kernbotschaft: Die Jobfamilie wandelt sich von einer primär operativen hin zu einer steuernden, KI-augmentierten Funktion. Reskilling in Data Literacy und KI-gestützter Entscheidungsfindung ist kritisch.</div>
+</div>
+
+<div class="blueprint-card">
+<div class="blueprint-header"><div><h4 style="font-family:Georgia,serif;font-size:1.15rem">Zielbild: Schaden & Leistung</h4><div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-top:.25rem">Transformation bis 2030 | 1.180 FTE aktuell, 820 FTE Zielbild</div></div><div style="text-align:center;min-width:80px"><div class="blueprint-score">42%</div><div style="font-size:.65rem;color:#666;margin-top:4px">Autom.-Potenzial</div></div></div>
+<div class="blueprint-body">
+<div class="blueprint-col"><h5 class="today">Skill-Mix heute</h5><div class="skill-bar"><div class="skill-bar-header"><span>Sachbearbeitung manuell</span><span style="color:#666">45%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:45%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Regelwerk-Anwendung</span><span style="color:#666">25%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:25%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Kundenkommunikation</span><span style="color:#666">20%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:20%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Digitale Tools</span><span style="color:#666">10%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:10%"></div></div></div></div>
+<div class="blueprint-col"><h5 class="target">Skill-Mix Zielbild 2030</h5><div class="skill-bar"><div class="skill-bar-header"><span>KI-gestützte Entscheidung</span><span style="color:#FD5108">30%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:30%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Komplexfallbearbeitung</span><span style="color:#FD5108">25%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:25%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Prozesssteuerung & QS</span><span style="color:#FD5108">20%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:20%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Kundenkommunikation</span><span style="color:#FD5108">15%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:15%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Data Literacy</span><span style="color:#FD5108">10%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:10%"></div></div></div></div>
+</div>
+<div class="blueprint-footer">Kernbotschaft: Schadensbearbeitung wird durch Agentic AI fundamental transformiert. Manuelle Routinetätigkeiten werden durch KI-gestützte Entscheidungsprozesse und Komplexfallmanagement abgelöst.</div>
+</div>
+</div>
+
+<!-- TRENDS TAB -->
+<div id="tab-trends" class="tab-content">
+<div class="section-label">Modul 04</div>
+<h2 class="section-title">Trend- und Impulsradar</h2>
+<p class="section-finding">Externe Technologie- und Markttrends mit systematischer Bewertung ihrer Relevanz und Auswirkungen auf Jobprofile und Kompetenzanforderungen im Versicherungsumfeld.</p>
+<hr class="orange-rule">
+
+<div class="trend-item"><div class="trend-score">95</div><div class="trend-content"><h4>Generative AI im Kundenservice</h4><div class="trend-meta">Impact: <strong class="high">Transformativ</strong> &nbsp;|&nbsp; Zeithorizont: <strong>1-2 Jahre</strong></div></div><span class="badge badge-critical">Kritisch</span></div>
+<div class="trend-item"><div class="trend-score">90</div><div class="trend-content"><h4>Agentic AI in der Schadensbearbeitung</h4><div class="trend-meta">Impact: <strong class="high">Transformativ</strong> &nbsp;|&nbsp; Zeithorizont: <strong>2-3 Jahre</strong></div></div><span class="badge badge-critical">Kritisch</span></div>
+<div class="trend-item"><div class="trend-score">82</div><div class="trend-content"><h4>Automatisierung Underwriting & Bestandsmanagement</h4><div class="trend-meta">Impact: <strong class="med">Hoch</strong> &nbsp;|&nbsp; Zeithorizont: <strong>2-4 Jahre</strong></div></div><span class="badge badge-critical">Kritisch</span></div>
+<div class="trend-item"><div class="trend-score">78</div><div class="trend-content"><h4>Predictive Analytics Risiko</h4><div class="trend-meta">Impact: <strong class="med">Hoch</strong> &nbsp;|&nbsp; Zeithorizont: <strong>1-3 Jahre</strong></div></div><span class="badge badge-high">Relevant</span></div>
+<div class="trend-item medium"><div class="trend-score">72</div><div class="trend-content"><h4>Low-Code/No-Code Plattformen</h4><div class="trend-meta">Impact: <strong>Mittel</strong> &nbsp;|&nbsp; Zeithorizont: <strong>1-2 Jahre</strong></div></div><span class="badge badge-high">Relevant</span></div>
+<div class="trend-item medium"><div class="trend-score">68</div><div class="trend-content"><h4>Embedded Insurance</h4><div class="trend-meta">Impact: <strong>Mittel</strong> &nbsp;|&nbsp; Zeithorizont: <strong>3-5 Jahre</strong></div></div><span class="badge badge-high">Relevant</span></div>
+<div class="trend-item medium"><div class="trend-score">60</div><div class="trend-content"><h4>Sustainability Reporting Automation</h4><div class="trend-meta">Impact: <strong>Mittel</strong> &nbsp;|&nbsp; Zeithorizont: <strong>2-3 Jahre</strong></div></div><span class="badge badge-high">Relevant</span></div>
+<div class="trend-item low"><div class="trend-score">35</div><div class="trend-content"><h4>Quantum Computing Aktuariat</h4><div class="trend-meta">Impact: <strong>Niedrig</strong> &nbsp;|&nbsp; Zeithorizont: <strong>5+ Jahre</strong></div></div><span class="badge badge-low">Beobachten</span></div>
+
+<div style="margin-top:2.5rem"></div>
+<div class="insight-grid">
+<div class="insight-card"><div class="insight-num">72%</div><p>der Versicherer planen signifikante GenAI-Investitionen in den nächsten 2 Jahren.</p><div class="insight-source">Quelle: PwC Insurance Outlook 2025</div></div>
+<div class="insight-card"><div class="insight-num">45%</div><p>der operativen Aufgaben im Versicherungsinnendienst sind durch KI automatisierbar.</p><div class="insight-source">Quelle: McKinsey Future of Work, 2024</div></div>
+<div class="insight-card"><div class="insight-num">3.2x</div><p>höhere Produktivität bei KI-augmentierten Mitarbeitenden in der Schadensbearbeitung.</p><div class="insight-source">Quelle: PwC GenAI Productivity Study</div></div>
+</div>
+</div>
+
+<!-- MEASURES TAB -->
+<div id="tab-measures" class="tab-content">
+<div class="section-label">Modul 05</div>
+<h2 class="section-title">Maßnahmen & Priorisierung</h2>
+<p class="section-finding">Priorisierter Maßnahmenkatalog mit Make/Buy/Borrow/Automate-Logik - abgeleitet aus den identifizierten Gaps und strategischen Handlungsbedarfen.</p>
+<hr class="orange-rule">
+
+<h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:1rem">Detaillierter Maßnahmenkatalog</h3>
+<table class="measure-table">
+<thead><tr><th>Maßnahme</th><th>Kategorie</th><th>Priorität</th><th>Impact</th><th>Aufwand</th></tr></thead>
+<tbody>
+<tr><td><strong>Reskilling KI & Data</strong></td><td><span class="cat-badge" style="background:#4CAF50">Qualifizierung</span></td><td style="color:#FD5108;font-weight:700">Sehr hoch</td><td><span class="progress-bar"><span class="progress-fill" style="width:92%;background:#FD5108"></span></span>92%</td><td style="color:#666">Mittel</td></tr>
+<tr><td><strong>Recruiting Data Scientists</strong></td><td><span class="cat-badge" style="background:#2196F3">Rekrutierung</span></td><td style="color:#FD5108;font-weight:700">Sehr hoch</td><td><span class="progress-bar"><span class="progress-fill" style="width:88%;background:#FD5108"></span></span>88%</td><td style="color:#666">Hoch</td></tr>
+<tr><td><strong>Prozessautomatisierung Claims</strong></td><td><span class="cat-badge" style="background:#FD5108">Automatisierung</span></td><td style="color:#E65100;font-weight:700">Hoch</td><td><span class="progress-bar"><span class="progress-fill" style="width:85%;background:#FD5108"></span></span>85%</td><td style="color:#666">Mittel</td></tr>
+<tr><td><strong>GenAI Produktivitäts-Rollout</strong></td><td><span class="cat-badge" style="background:#FD5108">Automatisierung</span></td><td style="color:#E65100;font-weight:700">Hoch</td><td><span class="progress-bar"><span class="progress-fill" style="width:80%;background:#FD5108"></span></span>80%</td><td style="color:#666">Niedrig</td></tr>
+<tr><td><strong>Aufbau AI Center of Excellence</strong></td><td><span class="cat-badge" style="background:#9C27B0">Organisation</span></td><td style="color:#E65100;font-weight:700">Hoch</td><td><span class="progress-bar"><span class="progress-fill" style="width:78%;background:#FD5108"></span></span>78%</td><td style="color:#666">Hoch</td></tr>
+<tr><td><strong>Strategisches Sourcing Operations</strong></td><td><span class="cat-badge" style="background:#FF9800">Sourcing</span></td><td style="color:#666;font-weight:700">Mittel</td><td><span class="progress-bar"><span class="progress-fill" style="width:65%;background:#FD5108"></span></span>65%</td><td style="color:#666">Niedrig</td></tr>
+<tr><td><strong>Demografiemanagement Programm</strong></td><td><span class="cat-badge" style="background:#607D8B">Umbau</span></td><td style="color:#666;font-weight:700">Mittel</td><td><span class="progress-bar"><span class="progress-fill" style="width:60%;background:#FD5108"></span></span>60%</td><td style="color:#666">Mittel</td></tr>
+<tr><td><strong>Upskilling Führungskräfte Digital</strong></td><td><span class="cat-badge" style="background:#4CAF50">Qualifizierung</span></td><td style="color:#666;font-weight:700">Mittel</td><td><span class="progress-bar"><span class="progress-fill" style="width:58%;background:#FD5108"></span></span>58%</td><td style="color:#666">Niedrig</td></tr>
+</tbody>
+</table>
+
+<div class="cta-box">
+<h4>Empfohlener nächster Schritt: SPP-MVP Umsetzung</h4>
+<p>Auf Basis dieser Analyse empfehlen wir die gemeinsame Umsetzung des SPP-MVP im Wellenmodell bis Oktober 2026 - mit Fokus auf die geschäftskritischsten Jobfamilien in Welle 1.</p>
+<ul>
+<li>Welle 1 (Pilot): Methodik-Test an prozess- und volumenstarken Jobfamilien (6 Wochen)</li>
+<li>Welle 2-4: Sukzessive Ausweitung auf Kerngeschäft, Markt & Steuerung, Enabler-Funktionen</li>
+<li>Treiberbasiertes Datenmodell mit KI-/Technologieimplikationen</li>
+<li>Co-Entwicklung mit internem Projektteam und strukturierter Wissenstransfer</li>
+</ul>
+<p>Ergebnis: Eine <strong>managementfähige, treiberbasierte SPP</strong> mit belastbaren Zielbildern, Gap-Analysen und priorisiertem Maßnahmenkatalog - intern anschlussfähig und in Folgezyklen wiederverwendbar.</p>
+</div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer>PwC Deutschland - Strategic Workforce Planning Demo | Illustrative Darstellung</footer>
+
+<script>
+function showTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-links button').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + tabId).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
