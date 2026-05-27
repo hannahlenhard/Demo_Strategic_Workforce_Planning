@@ -1,3 +1,41 @@
+<!-- PASSWORTSCHUTZ -->
+<div id="login-screen" style="display:flex; justify-content:center; 
+align-items:center; height:100vh; background:#1a1a2e; position:fixed; 
+top:0; left:0; width:100%; z-index:9999;">
+    <div style="background:white; padding:2.5rem; border-radius:12px; 
+    text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+        <h2 style="margin-bottom:1rem;">🔒 Zugang erforderlich</h2>
+        <p style="color:#666; margin-bottom:1.5rem;">
+            Bitte Passwort eingeben
+        </p>
+        <input type="password" id="pwd" placeholder="Passwort" 
+        style="padding:10px; width:220px; border:1px solid #ddd; 
+        border-radius:6px; font-size:1rem; display:block; 
+        margin:0 auto 1rem;">
+        <button onclick="checkPwd()" 
+        style="padding:10px 30px; background:#0078d4; color:white; 
+        border:none; border-radius:6px; font-size:1rem; cursor:pointer;">
+            Einloggen
+        </button>
+        <p id="err" style="color:red; display:none; margin-top:1rem;">
+            ❌ Falsches Passwort
+        </p>
+    </div>
+</div>
+
+<script>
+function checkPwd() {
+    if (document.getElementById("pwd").value === "SPP!2o26!") {
+        document.getElementById("login-screen").style.display = "none";
+    } else {
+        document.getElementById("err").style.display = "block";
+    }
+}
+document.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") checkPwd();
+});
+</script>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
