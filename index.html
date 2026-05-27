@@ -173,6 +173,59 @@ h1,h2,h3,h4,h5{font-family:Georgia,serif;font-weight:700;line-height:1.2}
 .cta-box ul li{padding:.35rem 0;font-size:.9rem;padding-left:1.25rem;position:relative;line-height:1.5}
 .cta-box ul li::before{content:"\2713";position:absolute;left:0;color:#FD5108;font-weight:700}
 footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px solid #EEEFF1}
+.lbl{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:#FD5108;font-weight:700;margin-bottom:.5rem}
+.finding{font-style:italic;color:#666;font-size:1rem;margin-bottom:1.5rem;max-width:900px;line-height:1.6}
+hr.rule{width:60px;height:3px;background:#FD5108;border:none;margin-bottom:2rem}
+.family-selector{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.fbtn{padding:.45rem 1rem;font-size:.78rem;font-weight:700;border:2px solid #EEEFF1;background:#fff;cursor:pointer;font-family:Arial,sans-serif;color:#666;border-radius:3px;transition:all .15s}
+.fbtn:hover,.fbtn.active{border-color:#FD5108;color:#FD5108}
+.fbtn.active{background:#FD5108;color:#fff}
+.bp{border:1px solid #EEEFF1;margin-bottom:2rem;overflow:hidden}
+.bp-head{display:flex;justify-content:space-between;align-items:flex-start;padding:1.5rem 2rem;border-bottom:1px solid #EEEFF1;background:#F5F7F8}
+.bp-score{font-family:Georgia,serif;font-size:2rem;color:#FD5108;font-weight:700;line-height:1;text-align:center}
+.bp-foot{padding:1.25rem 2rem;border-left:4px solid #FD5108;background:#FFFAF7;font-size:.9rem;color:#666;font-style:italic}
+.mapping-block{padding:1.5rem 2rem;border-bottom:1px solid #EEEFF1}
+.mapping-block.today{background:#fff}
+.mapping-block.future{background:#FFFAF7}
+.map-stage-lbl{display:inline-flex;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:1rem;padding:.3rem .75rem;border-radius:12px}
+.map-stage-lbl.today{background:#1a1a1a;color:#fff}
+.map-stage-lbl.future{background:#FD5108;color:#fff}
+.map-grid{display:grid;grid-template-columns:1fr 60px 1fr;gap:.75rem}
+.col-hd{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:2px solid #EEEFF1}
+.col-hd.sk{color:#FD5108;border-bottom-color:#FD5108}
+.task-item,.skill-item{border:1px solid #EEEFF1;padding:.6rem .85rem;margin-bottom:.5rem;font-size:.82rem;line-height:1.35;cursor:pointer;transition:all .15s;position:relative;background:#fff}
+.task-item{border-left:3px solid #1a1a1a}
+.skill-item{border-left:3px solid #FD5108}
+.task-item:hover,.task-item.hover{border-left-color:#FD5108;background:#FFFAF7;box-shadow:0 1px 4px rgba(253,81,8,.15)}
+.skill-item:hover,.skill-item.hover{background:#FFF5F0;box-shadow:0 1px 4px rgba(253,81,8,.2)}
+.item-share{display:block;font-size:.68rem;color:#FD5108;font-weight:700;margin-top:.2rem}
+.item-id{position:absolute;top:.5rem;right:.6rem;font-family:Georgia,serif;font-size:.65rem;color:#999;font-weight:700}
+.task-item.dim,.skill-item.dim{opacity:.25}
+.svg-wrap{position:relative}
+.map-svg{display:block;overflow:visible;pointer-events:none}
+.map-line{stroke:#ccc;stroke-width:1.5;fill:none;transition:stroke .15s,stroke-width .15s,opacity .15s}
+.map-line.highlight{stroke:#FD5108;stroke-width:2.5}
+.map-line.dim{opacity:.15}
+.map-legend{display:flex;gap:1.5rem;font-size:.72rem;color:#666;margin-top:1rem;padding-top:.75rem;border-top:1px dashed #EEEFF1;flex-wrap:wrap}
+.map-legend span{display:inline-flex;align-items:center;gap:.4rem}
+.ldot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.skillmix-block{padding:1.5rem 2rem;background:#F5F7F8;border-bottom:1px solid #EEEFF1}
+.skillmix-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.skillmix-col h5{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.skillmix-col h5.today{color:#1a1a1a}
+.skillmix-col h5.target{color:#FD5108}
+.sbar{margin-bottom:.75rem}
+.sbar-head{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:4px}
+.sbar-track{height:6px;background:#fff;border-radius:3px}
+.sbar-fill{height:100%;border-radius:3px}
+.sbar-fill.g{background:#666}
+.sbar-fill.o{background:#FD5108}
+.spider-wrap{background:#F5F7F8;border:1px solid #EEEFF1;padding:2rem;margin-bottom:2.5rem}
+.spider-wrap h3{font-family:Georgia,serif;font-size:1.15rem;margin-bottom:1.5rem}
+.spider-inner{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap}
+.spider-leg{display:flex;flex-direction:column;gap:.6rem;min-width:180px}
+.leg-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem}
+.leg-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
 @media(max-width:900px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr 1fr}.wave-grid{grid-template-columns:1fr}.blueprint-body{grid-template-columns:1fr}}
 @media(max-width:600px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr}.nav-links button{font-size:.7rem;padding:.4rem .5rem}}
 </style>
@@ -183,12 +236,12 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <img src="https://www.pwc.com/etc.clientlibs/pwc/clientlibs/rebrand-clientlibs/components-colors/resources/images/slim-header-v2/PwC-logo.svg" alt="PwC">
 <span class="nav-title">Strategic Workforce Planning - MVP Demo</span>
 <div class="nav-links">
-<button class="active" onclick="showTab('overview')">Gesamtblick</button>
-<button onclick="showTab('waves')">Wellenmodell</button>
-<button onclick="showTab('ki-impact')">KI-Impact</button>
-<button onclick="showTab('blueprints')">Zielbilder</button>
-<button onclick="showTab('trends')">Trendradar</button>
-<button onclick="showTab('measures')">Ma&szlig;nahmen</button>
+<button class="active" onclick="showTab('overview',this)">Gesamtblick</button>
+<button onclick="showTab('waves',this)">Wellenmodell</button>
+<button onclick="showTab('ki-impact',this)">KI-Impact</button>
+<button onclick="showTab('blueprints',this)">Zielbilder</button>
+<button onclick="showTab('trends',this)">Trendradar</button>
+<button onclick="showTab('measures',this)">Maßnahmen</button>
 </div>
 </nav>
 
@@ -329,28 +382,23 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 
 <!-- BLUEPRINTS TAB -->
 <div id="tab-blueprints" class="tab-content">
-<div class="section-label">Modul 03</div>
-<h2 class="section-title">Zielbilder &amp; Blaupr&auml;usen</h2>
-<p class="section-finding">Zukunftsgerichtete Zielbilder f&uuml;r priorisierte Jobfamilien - mit Skill-Mix-Transformation, Engp&auml;ssprofilen und strukturellen Ver&auml;nderungspfaden.</p>
-<hr class="orange-rule">
-
-<div class="blueprint-card">
-<div class="blueprint-header"><div><h4 style="font-family:Georgia,serif;font-size:1.15rem">Zielbild: Kundenservice &amp; Vertragsbearbeitung</h4><div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-top:.35rem">Transformation: -31% | Neue Rollen: +8%</div></div><div class="blueprint-score">8.2/10</div></div>
-<div class="blueprint-body">
-<div class="blueprint-col"><h5 class="today">Skill-Mix heute</h5><div class="skill-bar"><div class="skill-bar-header"><span>Telefonische Beratung</span><span style="color:#666">40%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:40%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Sachbearbeitung</span><span style="color:#666">35%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:35%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Qualitatspr&uuml;fung</span><span style="color:#666">15%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:15%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Prozessmanagement</span><span style="color:#666">10%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:10%"></div></div></div></div>
-<div class="blueprint-col"><h5 class="target">Skill-Mix Zielbild 2030</h5><div class="skill-bar"><div class="skill-bar-header"><span>KI-Steuerung &amp; Eskalation</span><span style="color:#FD5108">30%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:30%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Komplexe Kundenberatung</span><span style="color:#FD5108">28%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:28%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>KI-Monitoring &amp; Optimierung</span><span style="color:#FD5108">22%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:22%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Strategische Entwicklung</span><span style="color:#FD5108">20%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:20%"></div></div></div></div>
-</div>
-<div class="blueprint-footer">Kernbotschaft: Die Jobfamilie wandelt sich von einer prim&auml;r operativen hin zu einer steuernden, KI-augmentierten Funktion. Reskilling in Data Literacy und KI-gest&uuml;tztem Entscheidungsmanagement essentiell.</div>
-</div>
-
-<div class="blueprint-card">
-<div class="blueprint-header"><div><h4 style="font-family:Georgia,serif;font-size:1.15rem">Zielbild: Schaden &amp; Leistung</h4><div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-top:.35rem">Transformation: -30% | Neue Rollen: +12%</div></div><div class="blueprint-score">8.5/10</div></div>
-<div class="blueprint-body">
-<div class="blueprint-col"><h5 class="today">Skill-Mix heute</h5><div class="skill-bar"><div class="skill-bar-header"><span>Sachbearbeitung manuell</span><span style="color:#666">45%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:45%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Schadenspr&uuml;fung</span><span style="color:#666">30%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:30%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Eskalations-Management</span><span style="color:#666">15%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:15%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Kundenkommunikation</span><span style="color:#666">10%</span></div><div class="skill-bar-track"><div class="skill-bar-fill gray" style="width:10%"></div></div></div></div>
-<div class="blueprint-col"><h5 class="target">Skill-Mix Zielbild 2030</h5><div class="skill-bar"><div class="skill-bar-header"><span>KI-gest&uuml;tzte Entscheidung</span><span style="color:#FD5108">35%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:35%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Komplexe Fallbearbeitung</span><span style="color:#FD5108">25%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:25%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>KI-Modell &Uuml;berwachung</span><span style="color:#FD5108">20%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:20%"></div></div></div><div class="skill-bar"><div class="skill-bar-header"><span>Strateg. Risikosteuerung</span><span style="color:#FD5108">20%</span></div><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:20%"></div></div></div></div>
-</div>
-<div class="blueprint-footer">Kernbotschaft: Schadensbearbeitung wird durch Agentic AI fundamental transformiert. Manuelle Routinetätigkeiten werden durch KI-gest&uuml;tzte Entscheidungsprozesse ersetzt. Gleichzeitig w&auml;chst der Bedarf an AI-Literacy und strategischem Risikomanagement.</div>
-</div>
+  <div class="section-label">Modul 03</div>
+  <h2 class="section-title">Zielbilder &amp; Blaupausen</h2>
+  <p class="finding">Zukunftsgerichtete Zielbilder f&uuml;r priorisierte Jobfamilien &ndash; mit dreistufiger Logik: <strong>T&auml;tigkeiten &rarr; Skills &rarr; Skill-Mix</strong>.</p>
+  <hr class="rule">
+  <div class="family-selector" id="bp-sel"></div>
+  <div id="bp-card"></div>
+  <div class="spider-wrap">
+    <h3>Skill-Radar: Heute vs. Zielbild 2030</h3>
+    <div class="spider-inner">
+      <canvas id="bp-cv" width="360" height="360"></canvas>
+      <div class="spider-leg">
+        <div class="leg-item"><div class="leg-dot" style="background:#666"></div>Skill-Mix heute</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#FD5108"></div>Zielbild 2030</div>
+        <div id="bp-legSkills" style="margin-top:.5rem;display:flex;flex-direction:column;gap:.4rem"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- TRENDS TAB -->
@@ -424,12 +472,192 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <footer>PwC Deutschland - Strategic Workforce Planning Demo | Illustrative Darstellung</footer>
 
 <script>
-function showTab(tabId) {
+function showTab(tabId, btn) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.nav-links button').forEach(el => el.classList.remove('active'));
   document.getElementById('tab-' + tabId).classList.add('active');
-  event.target.classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(tabId === 'blueprints') {
+    requestAnimationFrame(() => requestAnimationFrame(bpDrawMappings));
+  }
 }
+</script>
+
+<script>
+const BPD=[
+ {id:"kundenservice",n:"Kundenservice & Vertragsbearbeitung",w:1,fte:1420,z:980,a:48,
+  sub:"1.420 FTE aktuell → 980 FTE Zielbild",
+  t:[["Telefonische Beratung",40],["Schriftbearbeitung",30],["Systemnavigation",20],["Beschwerdemanagement",10]],
+  g:[["KI-Steuerung & Eskalation",30],["Komplexberatung",25],["Customer Experience",20],["Prozessoptimierung",15],["Data Literacy",10]],
+  f:"Die Jobfamilie wandelt sich von einer primär operativen hin zu einer steuernden, KI-augmentierten Funktion.",
+  sl:["Telefonberatung","Schriftbearb.","Systemnavig.","Beschwerdemgmt.","KI-Steuerung","Komplexberat.","CX","Data Literacy"],
+  sv:[40,30,20,10,5,5,5,5],gv:[10,5,10,5,30,25,20,10],
+  tt:[{id:"t1",l:"Eingehende Kundenanrufe entgegennehmen & manuell beantworten",s:"~30% der Arbeitszeit",lk:["s1","s4"]},
+      {id:"t2",l:"Vertragsänderungen manuell in Bestandssystemen erfassen",s:"~22% der Arbeitszeit",lk:["s2","s3"]},
+      {id:"t3",l:"Schriftliche Korrespondenz (Briefe, E-Mails) verfassen",s:"~18% der Arbeitszeit",lk:["s2","s4"]},
+      {id:"t4",l:"Standard-Dokumente prüfen & ablegen",s:"~15% der Arbeitszeit",lk:["s3"]},
+      {id:"t5",l:"Beschwerden bearbeiten & eskalieren",s:"~10% der Arbeitszeit",lk:["s1","s5"]},
+      {id:"t6",l:"Interne Rückfragen an Fachabteilungen klären",s:"~5% der Arbeitszeit",lk:["s5"]}],
+  ts:[{id:"s1",l:"Telefonische Beratung & Gesprächsführung",s:"40% Skill-Mix",lk:["t1","t5"]},
+      {id:"s2",l:"Schriftbearbeitung & Korrespondenz",s:"30% Skill-Mix",lk:["t2","t3"]},
+      {id:"s3",l:"Systemnavigation Bestandssysteme",s:"20% Skill-Mix",lk:["t2","t4"]},
+      {id:"s4",l:"Produkt- & Tarifwissen",s:"5% Skill-Mix",lk:["t1","t3"]},
+      {id:"s5",l:"Beschwerdemanagement",s:"5% Skill-Mix",lk:["t5","t6"]}],
+  ft:[{id:"t1f",l:"KI-Agenten steuern, überwachen & Eskalationen freigeben",s:"~28% der Arbeitszeit",lk:["s1f","s5f"]},
+      {id:"t2f",l:"Komplexe Beratung in beratungsintensiven Lebenslagen",s:"~25% der Arbeitszeit",lk:["s2f","s4f"]},
+      {id:"t3f",l:"Customer-Journey-Analysen & Verbesserungsmaßnahmen ableiten",s:"~18% der Arbeitszeit",lk:["s3f","s4f"]},
+      {id:"t4f",l:"Quality Assurance der KI-Outputs (Sampling, Re-Training)",s:"~15% der Arbeitszeit",lk:["s1f","s5f"]},
+      {id:"t5f",l:"Prozesse identifizieren & Automatisierungs-Stories formulieren",s:"~10% der Arbeitszeit",lk:["s5f"]},
+      {id:"t6f",l:"Empathische Konfliktbearbeitung in Hochrisiko-Fällen",s:"~4% der Arbeitszeit",lk:["s2f","s3f"]}],
+  fs:[{id:"s1f",l:"KI-Steuerung, Prompting & Eskalation",s:"30% Skill-Mix",lk:["t1f","t4f"]},
+      {id:"s2f",l:"Komplexberatung & Empathie",s:"25% Skill-Mix",lk:["t2f","t6f"]},
+      {id:"s3f",l:"Customer Experience Design",s:"20% Skill-Mix",lk:["t3f","t6f"]},
+      {id:"s4f",l:"Prozessanalyse & Optimierung",s:"15% Skill-Mix",lk:["t2f","t3f"]},
+      {id:"s5f",l:"Data Literacy & QA-Methodik",s:"10% Skill-Mix",lk:["t1f","t4f","t5f"]}]
+ },
+ {id:"schaden",n:"Schaden & Leistung",w:1,fte:1180,z:820,a:42,
+  sub:"1.180 FTE aktuell → 820 FTE Zielbild",
+  t:[["Sachbearbeitung manuell",45],["Regelwerk-Anwendung",25],["Kundenkommunikation",20],["Digitale Tools",10]],
+  g:[["KI-gestützte Entscheidung",30],["Komplexfallbearbeitung",25],["Prozesssteuerung & QS",20],["Kundenkommunikation",15],["Data Literacy",10]],
+  f:"Schadensbearbeitung wird durch Agentic AI fundamental transformiert. Manuelle Routinetätigkeiten werden durch KI-gestützte Entscheidungsprozesse abgelöst.",
+  sl:["Sachbearb.","Regelwerk","Kundenkommunik.","Dig. Tools","KI-Entscheid.","Komplexfall","Prozesssteuer.","Data Literacy"],
+  sv:[45,25,20,10,5,5,5,5],gv:[5,5,15,10,30,25,20,10],
+  tt:[{id:"t1",l:"Schadensmeldungen prüfen & manuell erfassen",s:"~28% der Arbeitszeit",lk:["s1","s2"]},
+      {id:"t2",l:"Deckungsprüfung anhand Vertragsdaten",s:"~22% der Arbeitszeit",lk:["s1","s3"]},
+      {id:"t3",l:"Schadenshöhe kalkulieren & dokumentieren",s:"~20% der Arbeitszeit",lk:["s2","s4"]},
+      {id:"t4",l:"Mit Kunden, Werkstätten & Gutachtern korrespondieren",s:"~15% der Arbeitszeit",lk:["s3","s4"]},
+      {id:"t5",l:"Regelwerke & Tarifbedingungen anwenden",s:"~10% der Arbeitszeit",lk:["s1"]},
+      {id:"t6",l:"Auszahlungen anweisen & dokumentieren",s:"~5% der Arbeitszeit",lk:["s4"]}],
+  ts:[{id:"s1",l:"Sachbearbeitung & Regelwerk-Anwendung",s:"45% Skill-Mix",lk:["t1","t2","t5"]},
+      {id:"s2",l:"Versicherungsfachliche Bewertung",s:"25% Skill-Mix",lk:["t1","t3"]},
+      {id:"s3",l:"Kundenkommunikation Schadensfall",s:"20% Skill-Mix",lk:["t2","t4"]},
+      {id:"s4",l:"Digitale Tools & Bestandssysteme",s:"10% Skill-Mix",lk:["t3","t4","t6"]}],
+  ft:[{id:"t1f",l:"KI-gestützte Schadensentscheidungen reviewen & freigeben",s:"~25% der Arbeitszeit",lk:["s1f","s5f"]},
+      {id:"t2f",l:"Komplexfälle (Großschäden, Betrugsverdacht) bearbeiten",s:"~25% der Arbeitszeit",lk:["s2f","s5f"]},
+      {id:"t3f",l:"Schadensprozesse steuern & Qualität sichern",s:"~20% der Arbeitszeit",lk:["s3f","s5f"]},
+      {id:"t4f",l:"Empathische Kundenbetreuung in sensiblen Schadenslagen",s:"~15% der Arbeitszeit",lk:["s4f","s2f"]},
+      {id:"t5f",l:"Daten- & Modellqualität der Schaden-KI überwachen",s:"~10% der Arbeitszeit",lk:["s5f","s3f"]},
+      {id:"t6f",l:"Betrugsmuster identifizieren (gemeinsam mit Analytics)",s:"~5% der Arbeitszeit",lk:["s3f"]}],
+  fs:[{id:"s1f",l:"KI-gestützte Entscheidungsfindung",s:"30% Skill-Mix",lk:["t1f"]},
+      {id:"s2f",l:"Komplexfallbearbeitung & Versicherungsexpertise",s:"25% Skill-Mix",lk:["t2f","t4f"]},
+      {id:"s3f",l:"Prozesssteuerung & Qualitätssicherung",s:"20% Skill-Mix",lk:["t3f","t5f","t6f"]},
+      {id:"s4f",l:"Empathische Kundenkommunikation",s:"15% Skill-Mix",lk:["t4f"]},
+      {id:"s5f",l:"Data Literacy & Modell-Monitoring",s:"10% Skill-Mix",lk:["t1f","t2f","t3f","t5f"]}]
+ },
+ {id:"hr",n:"HR",w:1,fte:280,z:250,a:22,
+  sub:"280 FTE aktuell → 250 FTE Zielbild",
+  t:[["Administration & Payroll",35],["Recruiting",25],["HR-Beratung",25],["Reporting",15]],
+  g:[["People Analytics",30],["Strateg. HR-Beratung",25],["Change & Transformation",20],["KI-Recruiting",15],["Autom. Admin",10]],
+  f:"HR entwickelt sich zur strategischen Funktion mit starkem Analytics-Fokus. Routineadministration wird weitgehend automatisiert.",
+  sl:["Administration","Recruiting","HR-Beratung","Reporting","People Analytics","Change Mgmt.","KI-Recruiting","Strateg. Berat."],
+  sv:[35,25,25,15,5,5,5,5],gv:[5,10,15,5,30,20,15,25],
+  tt:[{id:"t1",l:"Personaladministration & Payroll-Vorbereitung",s:"~35% der Arbeitszeit",lk:["s1","s4"]},
+      {id:"t2",l:"Stellenausschreibungen formulieren & Kandidaten sichten",s:"~25% der Arbeitszeit",lk:["s2"]},
+      {id:"t3",l:"Mitarbeitende beraten (Arbeitsrecht, Benefits, Karriere)",s:"~25% der Arbeitszeit",lk:["s3"]},
+      {id:"t4",l:"HR-Reporting & Kennzahlen erstellen",s:"~15% der Arbeitszeit",lk:["s4","s3"]}],
+  ts:[{id:"s1",l:"Administration & Prozessausführung",s:"35% Skill-Mix",lk:["t1"]},
+      {id:"s2",l:"Recruiting & Eignungsdiagnostik",s:"25% Skill-Mix",lk:["t2"]},
+      {id:"s3",l:"HR-Beratung & Arbeitsrecht",s:"25% Skill-Mix",lk:["t3","t4"]},
+      {id:"s4",l:"Reporting & Datenpflege",s:"15% Skill-Mix",lk:["t1","t4"]}],
+  ft:[{id:"t1f",l:"People-Analytics-Auswertungen interpretieren & Handlungsempfehlungen ableiten",s:"~30% der Arbeitszeit",lk:["s1f","s5f"]},
+      {id:"t2f",l:"Strategische HR-Beratung von Führungskräften bei Transformation",s:"~25% der Arbeitszeit",lk:["s2f"]},
+      {id:"t3f",l:"Change-Maßnahmen begleiten & Widerstand managen",s:"~20% der Arbeitszeit",lk:["s3f"]},
+      {id:"t4f",l:"KI-gestütztes Recruiting steuern & Candidate Experience gestalten",s:"~15% der Arbeitszeit",lk:["s4f","s1f"]},
+      {id:"t5f",l:"Automatisierte HR-Prozesse überwachen & optimieren",s:"~10% der Arbeitszeit",lk:["s5f"]}],
+  fs:[{id:"s1f",l:"People Analytics & Dateninterpretation",s:"30% Skill-Mix",lk:["t1f","t4f"]},
+      {id:"s2f",l:"Strategische HR-Beratung",s:"25% Skill-Mix",lk:["t2f"]},
+      {id:"s3f",l:"Change & Transformation Management",s:"20% Skill-Mix",lk:["t3f"]},
+      {id:"s4f",l:"KI-gestütztes Recruiting",s:"15% Skill-Mix",lk:["t4f"]},
+      {id:"s5f",l:"HR-Prozessautomatisierung",s:"10% Skill-Mix",lk:["t5f"]}]
+ },
+ {id:"op-support",n:"Operativer Support",w:1,fte:420,z:320,a:38,
+  sub:"420 FTE aktuell → 320 FTE Zielbild",
+  t:[["Manuelle Datenpflege",40],["Postbearbeitung",25],["Interne Koordination",20],["Systembetreuung",15]],
+  g:[["Prozessautomatisierung",35],["Systemsteuerung",25],["Qualitätssicherung",20],["Interne Koordination",10],["Data Literacy",10]],
+  f:"Der operative Support wandelt sich von manuellen Tätigkeiten hin zur aktiven Steuerung automatisierter Prozesse.",
+  sl:["Datenpflege","Postbearb.","Koordination","Systembetreu.","Prozessautom.","Systemsteuer.","QS","Data Literacy"],
+  sv:[40,25,20,15,5,5,5,5],gv:[5,5,10,15,35,25,20,10],
+  tt:[{id:"t1",l:"Stammdaten manuell erfassen & pflegen",s:"~40% der Arbeitszeit",lk:["s1","s3"]},
+      {id:"t2",l:"Eingehende Post scannen, indexieren & weiterleiten",s:"~25% der Arbeitszeit",lk:["s2"]},
+      {id:"t3",l:"Interne Anfragen koordinieren & weiterleiten",s:"~20% der Arbeitszeit",lk:["s4"]},
+      {id:"t4",l:"Systemstörungen melden & Basisbehebung",s:"~15% der Arbeitszeit",lk:["s3","s4"]}],
+  ts:[{id:"s1",l:"Manuelle Dateneingabe & -pflege",s:"40% Skill-Mix",lk:["t1"]},
+      {id:"s2",l:"Postbearbeitung & Dokumentenmanagement",s:"25% Skill-Mix",lk:["t2"]},
+      {id:"s3",l:"Systemnavigation & Fehlererfassung",s:"20% Skill-Mix",lk:["t1","t4"]},
+      {id:"s4",l:"Interne Koordination & Kommunikation",s:"15% Skill-Mix",lk:["t3","t4"]}],
+  ft:[{id:"t1f",l:"Automatisierte Datenprozesse überwachen & Ausnahmen behandeln",s:"~35% der Arbeitszeit",lk:["s1f","s5f"]},
+      {id:"t2f",l:"Systemperformance & Batch-Jobs steuern",s:"~25% der Arbeitszeit",lk:["s2f"]},
+      {id:"t3f",l:"Qualitätsprüfungen automatisierter Outputs durchführen",s:"~20% der Arbeitszeit",lk:["s3f","s5f"]},
+      {id:"t4f",l:"Interne Schnittstellen & Eskalationen koordinieren",s:"~10% der Arbeitszeit",lk:["s4f"]},
+      {id:"t5f",l:"Prozessdaten analysieren & Verbesserungen vorschlagen",s:"~10% der Arbeitszeit",lk:["s5f","s1f"]}],
+  fs:[{id:"s1f",l:"Prozessautomatisierung & RPA-Steuerung",s:"35% Skill-Mix",lk:["t1f","t5f"]},
+      {id:"s2f",l:"Systemsteuerung & Monitoring",s:"25% Skill-Mix",lk:["t2f"]},
+      {id:"s3f",l:"Qualitätssicherung & Ausnahmebehandlung",s:"20% Skill-Mix",lk:["t3f"]},
+      {id:"s4f",l:"Interne Koordination & Kommunikation",s:"10% Skill-Mix",lk:["t4f"]},
+      {id:"s5f",l:"Data Literacy & Prozessanalyse",s:"10% Skill-Mix",lk:["t1f","t3f","t5f"]}]
+ }
+];
+
+let bpCur=BPD[0];
+const bpSbar=(l,v,cls,col)=>`<div class="sbar"><div class="sbar-head"><span>${l}</span><span style="color:${col}">${v}%</span></div><div class="sbar-track"><div class="sbar-fill ${cls}" style="width:${v}%"></div></div></div>`;
+const bpItemHtml=(arr,cls)=>arr.map(x=>`<div class="${cls}" data-id="${x.id}" data-links="${x.lk.join(',')}">${x.l}<span class="item-share">${x.s}</span><span class="item-id">${x.id.replace('f','').toUpperCase()}</span></div>`).join('');
+const bpMapBlock=(tasks,skills,svgId,cls,lbl,thd,shd)=>`<div class="mapping-block ${cls}"><span class="map-stage-lbl ${cls}">${lbl}</span><div class="map-grid"><div><div class="col-hd">${thd}</div>${bpItemHtml(tasks,'task-item')}</div><div class="svg-wrap"><svg class="map-svg" id="${svgId}"></svg></div><div><div class="col-hd sk">${shd}</div>${bpItemHtml(skills,'skill-item')}</div></div><div class="map-legend"><span><span class="ldot" style="background:#1a1a1a"></span>Tätigkeit</span><span><span class="ldot" style="background:#FD5108"></span>Skill</span><span style="color:#999">Tipp: Hovern zum Hervorheben</span></div></div>`;
+
+function bpRender(){
+  const f=bpCur,d=f.z-f.fte,dc=d>0?'#059669':'#FD5108',ds=d>0?`+${d}`:d;
+  document.getElementById('bp-sel').innerHTML=BPD.map(x=>`<button class="fbtn${x.id===f.id?' active':''}" onclick="bpPick('${x.id}')">${x.n} (Welle ${x.w})</button>`).join('');
+  document.getElementById('bp-card').innerHTML=`<div class="bp"><div class="bp-head"><div><h4 style="font-family:Georgia,serif;font-size:1.15rem">Zielbild: ${f.n}</h4><div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-top:.25rem">${f.sub}</div><div style="margin-top:.5rem;font-size:.85rem"><span style="color:${dc};font-weight:700;font-size:1rem">${ds} FTE </span><span style="color:#666">bis 2030</span> &nbsp;|&nbsp;<span style="color:#666">Autom.-Potenzial: </span><span style="font-weight:700;color:#FD5108">${f.a}%</span></div></div><div style="text-align:center;min-width:80px"><div class="bp-score">${f.a}%</div><div style="font-size:.65rem;color:#666;margin-top:4px">Autom.-Potenzial</div></div></div>${bpMapBlock(f.tt,f.ts,'bp-svg-today','today','Stand heute (2026)','Tätigkeiten heute','Skills heute')}${bpMapBlock(f.ft,f.fs,'bp-svg-future','future','Zielbild 2030','Tätigkeiten 2030','Skills 2030')}<div class="skillmix-block"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:#666;margin-bottom:1rem">Aggregierter Skill-Mix: Heute vs. Zielbild 2030</div><div class="skillmix-grid"><div class="skillmix-col"><h5 class="today">Heute (2026)</h5>${f.t.map(([l,v])=>bpSbar(l,v,'g','#666')).join('')}</div><div class="skillmix-col"><h5 class="target">Zielbild 2030</h5>${f.g.map(([l,v])=>bpSbar(l,v,'o','#FD5108')).join('')}</div></div></div><div class="bp-foot">${f.f}</div></div>`;
+  bpDrawSpider();bpSetupHover();requestAnimationFrame(()=>requestAnimationFrame(bpDrawMappings));
+}
+function bpDrawMappings(){
+  ['bp-svg-today','bp-svg-future'].forEach(svgId=>{
+    const svg=document.getElementById(svgId);if(!svg)return;
+    const wrap=svg.parentElement,grid=wrap.closest('.mapping-block'),cols=grid.querySelectorAll('.map-grid > div');
+    const wR=wrap.getBoundingClientRect(),lR=cols[0].getBoundingClientRect(),rR=cols[2].getBoundingClientRect();
+    const W=wR.width,H=Math.max(lR.bottom,rR.bottom)-wR.top;if(!W||H<=0)return;
+    wrap.style.height=H+'px';svg.setAttribute('width',W);svg.setAttribute('height',H);svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML='';
+    grid.querySelectorAll('.task-item').forEach(task=>{
+      const sy=(task.getBoundingClientRect().top+task.getBoundingClientRect().height/2)-wR.top;
+      (task.dataset.links||'').split(',').filter(Boolean).forEach(lid=>{
+        const sk=grid.querySelector(`.skill-item[data-id="${lid}"]`);if(!sk)return;
+        const sr=sk.getBoundingClientRect(),ey=(sr.top+sr.height/2)-wR.top;
+        const p=document.createElementNS('http://www.w3.org/2000/svg','path'),mx=W/2;
+        p.setAttribute('d',`M0 ${sy} C${mx} ${sy},${mx} ${ey},${W} ${ey}`);p.setAttribute('class','map-line');
+        p.dataset.from=task.dataset.id;p.dataset.to=lid;svg.appendChild(p);
+      });
+    });
+  });
+}
+function bpSetupHover(){
+  document.querySelectorAll('#bp-card .mapping-block').forEach(grid=>{
+    grid.querySelectorAll('.task-item,.skill-item').forEach(item=>{
+      item.addEventListener('mouseenter',()=>{
+        const id=item.dataset.id,links=(item.dataset.links||'').split(',').filter(Boolean),all=[id,...links];
+        grid.querySelectorAll('.task-item,.skill-item').forEach(el=>el.classList.toggle('dim',!all.includes(el.dataset.id)));
+        grid.querySelector('.map-svg')?.querySelectorAll('.map-line').forEach(l=>{const h=l.dataset.from===id||l.dataset.to===id;l.classList.toggle('highlight',h);l.classList.toggle('dim',!h);});
+      });
+      item.addEventListener('mouseleave',()=>{
+        grid.querySelectorAll('.task-item,.skill-item').forEach(el=>el.classList.remove('hover','dim'));
+        grid.querySelector('.map-svg')?.querySelectorAll('.map-line').forEach(l=>l.classList.remove('highlight','dim'));
+      });
+    });
+  });
+}
+function bpDrawSpider(){
+  const f=bpCur,cv=document.getElementById('bp-cv'),ctx=cv.getContext('2d');
+  const cx=180,cy=180,R=140,n=f.sl.length,mx=50;ctx.clearRect(0,0,360,360);
+  const pt=(i,r)=>{const a=(2*Math.PI*i/n)-Math.PI/2;return[cx+r*Math.cos(a),cy+r*Math.sin(a)]};
+  for(let r=1;r<=5;r++){ctx.beginPath();f.sl.forEach((_,i)=>{const[x,y]=pt(i,r/5*R);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.strokeStyle='#ddd';ctx.lineWidth=1;ctx.stroke();}
+  for(let i=0;i<n;i++){const[x,y]=pt(i,R);ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(x,y);ctx.strokeStyle='#ddd';ctx.lineWidth=1;ctx.stroke();}
+  ctx.font='10px Arial';ctx.fillStyle='#666';ctx.textAlign='center';ctx.textBaseline='middle';
+  f.sl.forEach((l,i)=>{const[x,y]=pt(i,R+18);ctx.fillText(l,x,y)});
+  const poly=(vals,stroke,fill)=>{ctx.beginPath();vals.forEach((v,i)=>{const[x,y]=pt(i,v/mx*R);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();};
+  poly(f.sv,'#666','rgba(102,102,102,0.15)');poly(f.gv,'#FD5108','rgba(253,81,8,0.15)');
+  document.getElementById('bp-legSkills').innerHTML=f.sl.map((l,i)=>`<div style="font-size:.75rem;color:#666;display:flex;justify-content:space-between;gap:1rem"><span>${l}</span><span style="white-space:nowrap"><span style="color:#666;font-weight:700">${f.sv[i]}%</span> → <span style="color:#FD5108;font-weight:700">${f.gv[i]}%</span></span></div>`).join('');
+}
+function bpPick(id){bpCur=BPD.find(f=>f.id===id);bpRender();}
+window.addEventListener('load',bpRender);
+window.addEventListener('resize',()=>requestAnimationFrame(bpDrawMappings));
 </script>
 </body>
 </html>
