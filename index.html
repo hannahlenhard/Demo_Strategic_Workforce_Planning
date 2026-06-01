@@ -222,16 +222,22 @@ h1,h2,h3,h4,h5{font-family:Georgia,serif;font-weight:700;line-height:1.2}
 .chart-legend-item{display:flex;align-items:center;gap:.4rem}
 .legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
 /* Donut */
-.donut-wrap{border:1px solid #EEEFF1;padding:1.5rem 2rem;margin-bottom:2.5rem;background:#fff}
+.donut-wrap{border:1px solid #EEEFF1;padding:1.5rem 2rem;margin-bottom:2.5rem;background:#fff;position:relative}
 .donut-title{font-family:Georgia,serif;font-size:1.4rem;margin-bottom:1.25rem}
 .donut-inner{display:flex;align-items:center;gap:3rem}
-.donut-canvas-wrap{flex-shrink:0}
+.donut-canvas-wrap{flex-shrink:0;position:relative}
 .donut-legend{flex:1}
 .donut-legend-item{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid #f0f0f0;font-size:.9rem}
 .donut-legend-item:last-child{border-bottom:none}
 .donut-legend-left{display:flex;align-items:center;gap:.6rem}
 .donut-legend-dot{width:13px;height:13px;border-radius:50%;flex-shrink:0}
 .donut-legend-pct{font-family:Georgia,serif;font-weight:700;font-size:1rem;color:#1a1a1a}
+#donutSvg path{transition:opacity .15s, transform .15s; transform-origin:150px 150px; cursor:pointer}
+#donutSvg path.dim{opacity:.35}
+#donutSvg path.active{transform:scale(1.03)}
+.donut-tooltip{position:absolute;background:#fff;border:1px solid #ccc;padding:.6rem .85rem;font-size:.82rem;pointer-events:none;display:none;box-shadow:0 2px 8px rgba(0,0,0,.12);min-width:140px;z-index:10;font-family:Arial,sans-serif}
+.donut-tooltip .dtt-label{font-weight:700;font-family:Georgia,serif;margin-bottom:.2rem}
+.donut-tooltip .dtt-pct{font-size:.95rem;font-weight:700}
 footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px solid #EEEFF1}
 @media(max-width:900px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr 1fr}.wave-grid{grid-template-columns:1fr}.skillmix-grid{grid-template-columns:1fr}.map-grid{grid-template-columns:1fr}.svg-wrap{display:none}.donut-inner{flex-direction:column}.gantt{overflow-x:auto}.gantt .mhead,.gantt .row{min-width:900px}}
 @media(max-width:600px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr}.nav-links button{font-size:.7rem;padding:.4rem .5rem}.fbtn{font-size:.7rem;padding:.35rem .65rem}}
@@ -315,18 +321,18 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <hr class="orange-rule">
 <div class="kpi-grid">
 <div class="kpi-card"><div class="kpi-label">Anzahl Wellen</div><div class="kpi-value">4</div><div class="kpi-desc">Sequenzielle Umsetzung</div></div>
-<div class="kpi-card"><div class="kpi-label">Zeitrahmen</div><div class="kpi-value">4-6 Wo.</div><div class="kpi-desc">Pro Welle (Welle 1: 6 Wochen)</div></div>
+<div class="kpi-card"><div class="kpi-label">Zeitrahmen</div><div class="kpi-value">4-6 Wo.</div><div class="kpi-desc">Pro Welle</div></div>
 <div class="kpi-card"><div class="kpi-label">Jobarchitektur</div><div class="kpi-value">14/38/130</div><div class="kpi-desc">Familien / Cluster / Profile</div></div>
 <div class="kpi-card"><div class="kpi-label">Deadline</div><div class="kpi-value">Okt. 2026</div><div class="kpi-desc">Managementfähige Ergebnisse</div></div>
 </div>
 <div class="wave-grid">
-<div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 1</span><span class="wave-name">Pilot</span></div><div class="wave-subtitle">Prozess- und volumenstarke Jobfamilien sowie Zentralfunktion</div></div><div style="text-align:right"><div style="font-size:.65rem;color:#666;text-transform:uppercase">Dauer</div><div class="wave-duration">6 Wochen</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Kundenservice & Vertragsbearbeitung (1/2)</li><li>Schaden & Leistung</li><li>HR</li><li>Operativer Support (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>6</strong></div><div>Profile: <strong>~8</strong></div><div>Start: <strong>KW 24 (Juni 2026)</strong></div></div></div></div>
-<div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 2</span><span class="wave-name">Operatives Kerngeschäft</span></div><div class="wave-subtitle">Profitabilitäts- und risikokritische Kernfunktionen</div></div><div style="text-align:right"><div style="font-size:.65rem;color:#666;text-transform:uppercase">Dauer</div><div class="wave-duration">4 Wochen</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Underwriting & Bestandsmanagement</li><li>Kundenservice & Vertragsbearbeitung (2/2)</li><li>Strategie, Projekt- & Prozessmanagement (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>5</strong></div><div>Profile: <strong>~15</strong></div><div>Start: <strong>KW 32 (August 2026)</strong></div></div></div></div>
-<div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 3</span><span class="wave-name">Markt & Steuerung</span></div><div class="wave-subtitle">Marktnahe und steuernde Funktionen</div></div><div style="text-align:right"><div style="font-size:.65rem;color:#666;text-transform:uppercase">Dauer</div><div class="wave-duration">4 Wochen</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Vertrieb</li><li>Marketing & Kommunikation</li><li>Finanzen</li><li>Produkte & Services (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>8</strong></div><div>Profile: <strong>~22</strong></div><div>Start: <strong>KW 36 (September 2026)</strong></div></div></div></div>
-<div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 4</span><span class="wave-name">Strategie & Zukunft</span></div><div class="wave-subtitle">Transformatorische Enabler-Funktionen</div></div><div style="text-align:right"><div style="font-size:.65rem;color:#666;text-transform:uppercase">Dauer</div><div class="wave-duration">4 Wochen</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>IT</li><li>Mathematik & Analytics</li><li>Governance</li><li>Führung</li><li>Strategie, Projekt- & Prozessmanagement (2/2)</li><li>Produkte & Services (2/2)</li><li>Operativer Support (2/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>8</strong></div><div>Profile: <strong>~43</strong></div><div>Start: <strong>KW 40 (Oktober 2026)</strong></div></div></div></div>
+<div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 1</span><span class="wave-name">Pilot</span></div><div class="wave-subtitle">Prozess- und volumenstarke Jobfamilien sowie Zentralfunktion</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Kundenservice & Vertragsbearbeitung (1/2)</li><li>Schaden & Leistung</li><li>HR</li><li>Operativer Support (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>6</strong></div><div>Profile: <strong>~8</strong></div></div></div></div>
+<div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 2</span><span class="wave-name">Operatives Kerngeschäft</span></div><div class="wave-subtitle">Profitabilitäts- und risikokritische Kernfunktionen</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Underwriting & Bestandsmanagement</li><li>Kundenservice & Vertragsbearbeitung (2/2)</li><li>Strategie, Projekt- & Prozessmanagement (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>5</strong></div><div>Profile: <strong>~15</strong></div></div></div></div>
+<div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 3</span><span class="wave-name">Markt & Steuerung</span></div><div class="wave-subtitle">Marktnahe und steuernde Funktionen</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Vertrieb</li><li>Marketing & Kommunikation</li><li>Finanzen</li><li>Produkte & Services (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>8</strong></div><div>Profile: <strong>~22</strong></div></div></div></div>
+<div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 4</span><span class="wave-name">Strategie & Zukunft</span></div><div class="wave-subtitle">Transformatorische Enabler-Funktionen</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>IT</li><li>Mathematik & Analytics</li><li>Governance</li><li>Führung</li><li>Strategie, Projekt- & Prozessmanagement (2/2)</li><li>Produkte & Services (2/2)</li><li>Operativer Support (2/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>8</strong></div><div>Profile: <strong>~43</strong></div></div></div></div>
 </div>
 
-<h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:.35rem">Zeitliche Einordnung (Juni - Oktober 2026)</h3>
+<h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:.35rem">Zeitliche Einordnung (Juli - Oktober 2026)</h3>
 
 <div class="gantt">
   <div class="mhead">
@@ -366,8 +372,6 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
   </div>
 </div>
 
-<div class="dark-block"><h3>Übergreifendes Ziel aller Wellen</h3><p>Analyse der Kompetenzanforderungen durch Trends und Treiber, wie neue Technologien (KI, Analytics) sowie des Potenzials zur Erreichung von Strategiezielen und Transformationsvorhaben.</p></div>
-<div class="hint-block">Hinweis: Für Welle 1 ist ein Zeitraum von 6 Wochen vorgesehen, ab Welle 2 eine Umsetzungsdauer von 4 Wochen pro Welle.</div>
 </div>
 
 <!-- KI-IMPACT -->
@@ -459,7 +463,10 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <div class="donut-wrap">
   <h3 class="donut-title">Maßnahmen-Mix (Make / Buy / Borrow / Automate)</h3>
   <div class="donut-inner">
-    <div class="donut-canvas-wrap"><svg id="donutSvg" viewBox="0 0 300 300" width="300" height="300" style="overflow:visible"></svg></div>
+    <div class="donut-canvas-wrap">
+      <svg id="donutSvg" viewBox="0 0 300 300" width="300" height="300" style="overflow:visible"></svg>
+      <div class="donut-tooltip" id="donutTooltip"><div class="dtt-label" id="dttLabel"></div><div class="dtt-pct" id="dttPct"></div></div>
+    </div>
     <div class="donut-legend">
       <div class="donut-legend-item"><div class="donut-legend-left"><span class="donut-legend-dot" style="background:#4CAF50"></span><span>Qualifizierung</span></div><span class="donut-legend-pct">35%</span></div>
       <div class="donut-legend-item"><div class="donut-legend-left"><span class="donut-legend-dot" style="background:#2196F3"></span><span>Rekrutierung</span></div><span class="donut-legend-pct">20%</span></div>
@@ -529,22 +536,47 @@ let donutDrawn=false;
 function drawDonutSVG(){
   if(donutDrawn)return;donutDrawn=true;
   const svg=document.getElementById('donutSvg');
+  const tooltip=document.getElementById('donutTooltip');
+  const ttLabel=document.getElementById('dttLabel');
+  const ttPct=document.getElementById('dttPct');
   const cx=150,cy=150,outerR=110,innerR=62;
-  const segs=[{pct:35,color:'#4CAF50',label:'Qualifizierung 35%'},{pct:20,color:'#2196F3',label:'Rekrutierung 20%'},{pct:25,color:'#E64A19',label:'Automatisierung 25%'},{pct:10,color:'#FF9800',label:'Sourcing 10%'},{pct:10,color:'#607D8B',label:'Umbau 10%'}];
+  const segs=[{pct:35,color:'#4CAF50',label:'Qualifizierung'},{pct:20,color:'#2196F3',label:'Rekrutierung'},{pct:25,color:'#E64A19',label:'Automatisierung'},{pct:10,color:'#FF9800',label:'Sourcing'},{pct:10,color:'#607D8B',label:'Umbau'}];
   function pol(a,r){return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)};}
   function slice(s,e,oR,iR){const s1=pol(s,oR),e1=pol(e,oR),s2=pol(e,iR),e2=pol(s,iR),lg=(e-s)>Math.PI?1:0;return`M${s1.x} ${s1.y} A${oR} ${oR} 0 ${lg} 1 ${e1.x} ${e1.y} L${s2.x} ${s2.y} A${iR} ${iR} 0 ${lg} 0 ${e2.x} ${e2.y} Z`;}
   let cur=-Math.PI/2;
+  const paths=[];
   segs.forEach(seg=>{
-    const sa=(seg.pct/100)*2*Math.PI,ea=cur+sa,mid=cur+sa/2;
+    const sa=(seg.pct/100)*2*Math.PI,ea=cur+sa;
     const p=document.createElementNS('http://www.w3.org/2000/svg','path');
-    p.setAttribute('d',slice(cur,ea,outerR,innerR));p.setAttribute('fill',seg.color);p.setAttribute('stroke','#fff');p.setAttribute('stroke-width','2');svg.appendChild(p);
-    const ls=pol(mid,outerR+4),le=pol(mid,outerR+18);
-    const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
-    ln.setAttribute('x1',ls.x);ln.setAttribute('y1',ls.y);ln.setAttribute('x2',le.x);ln.setAttribute('y2',le.y);ln.setAttribute('stroke',seg.color);ln.setAttribute('stroke-width','1.5');svg.appendChild(ln);
-    const lR=outerR+28,lx=cx+lR*Math.cos(mid),ly=cy+lR*Math.sin(mid);
-    const t=document.createElementNS('http://www.w3.org/2000/svg','text');
-    t.setAttribute('x',lx);t.setAttribute('y',ly);t.setAttribute('text-anchor',lx<cx?'end':'start');t.setAttribute('dominant-baseline','middle');t.setAttribute('font-size','11');t.setAttribute('font-family','Arial,sans-serif');t.setAttribute('fill',seg.color);t.setAttribute('font-weight','bold');t.textContent=seg.label;svg.appendChild(t);
+    p.setAttribute('d',slice(cur,ea,outerR,innerR));p.setAttribute('fill',seg.color);p.setAttribute('stroke','#fff');p.setAttribute('stroke-width','2');
+    p.dataset.label=seg.label;p.dataset.pct=seg.pct;p.dataset.color=seg.color;
+    svg.appendChild(p);paths.push(p);
     cur=ea;
+  });
+
+  const wrap=svg.parentElement;
+  paths.forEach(p=>{
+    p.addEventListener('mouseenter',function(e){
+      paths.forEach(o=>o.classList.add('dim'));
+      p.classList.remove('dim');p.classList.add('active');
+      ttLabel.textContent=p.dataset.label;
+      ttLabel.style.color=p.dataset.color;
+      ttPct.textContent=p.dataset.pct+'%';
+      ttPct.style.color=p.dataset.color;
+      tooltip.style.display='block';
+    });
+    p.addEventListener('mousemove',function(e){
+      const r=wrap.getBoundingClientRect();
+      let left=e.clientX-r.left+14;
+      let top=e.clientY-r.top+14;
+      if(left+150>r.width)left=e.clientX-r.left-160;
+      tooltip.style.left=left+'px';
+      tooltip.style.top=top+'px';
+    });
+    p.addEventListener('mouseleave',function(){
+      paths.forEach(o=>{o.classList.remove('dim');o.classList.remove('active');});
+      tooltip.style.display='none';
+    });
   });
 }
 
@@ -780,5 +812,7 @@ function bpPick(id){bpCur=BPD.find(f=>f.id===id);bpRender();}
 window.addEventListener('load',()=>{ bpRender(); });
 window.addEventListener('resize',()=>requestAnimationFrame(bpDrawMappings));
 </script>
+</body>
+</html>
 </body>
 </html>
