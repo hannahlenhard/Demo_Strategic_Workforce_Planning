@@ -126,10 +126,17 @@ h1,h2,h3,h4,h5{font-family:Georgia,serif;font-weight:700;line-height:1.2}
 .wave-body ul li::before{content:"\2192";position:absolute;left:0;color:#FD5108}
 .wave-meta{display:flex;gap:1.5rem;padding-top:.75rem;border-top:1px solid #EEEFF1;font-size:.78rem;color:#666}
 .wave-meta strong{color:#1a1a1a}
-.timeline-bar{display:flex;align-items:center;margin-bottom:.75rem}
-.timeline-label{width:120px;font-size:.78rem;font-weight:700;color:#1a1a1a;flex-shrink:0}
-.timeline-track{flex:1;position:relative;height:32px;background:#f5f5f5;border-radius:4px}
-.timeline-fill{position:absolute;height:100%;background:#FD5108;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;font-weight:700}
+/* === NEW GANTT === */
+.gantt{border:1px solid #EEEFF1;background:#fff;padding:1.5rem;margin-bottom:2rem;font-size:.85rem}
+.gantt .mhead,.gantt .row{display:grid;grid-template-columns:200px repeat(16,1fr)}
+.gantt .mhead{border-bottom:1px solid #EEEFF1;font-size:.85rem;font-weight:700;color:#1a1a1a;background:#F5F7F8}
+.gantt .month{grid-column:span 4;text-align:center;padding:.7rem 0;border-left:1px solid #EEEFF1}
+.gantt .row{border-bottom:1px solid #f5f5f5;min-height:42px;align-items:center;position:relative}
+.gantt .rlabel{padding:.55rem .9rem .55rem 0;font-size:.85rem;color:#1a1a1a;height:100%;display:flex;align-items:center}
+.gantt .rlabel.bold{font-weight:700}
+.gantt .tl{grid-column:2/-1;position:relative;height:100%;border-left:1px solid #EEEFF1}
+.gantt .bar{position:absolute;height:20px;top:50%;transform:translateY(-50%);border-radius:1px;padding:2px 8px;font-size:.72rem;color:#fff;font-weight:600;white-space:nowrap;overflow:visible;display:flex;align-items:center;letter-spacing:.01em}
+.gantt .bar.orange{background:#FD5108}
 .dark-block{background:#1a1a1a;padding:2.5rem;margin-bottom:2rem}
 .dark-block h3{font-family:Georgia,serif;color:#FD5108;font-size:1.4rem;margin-bottom:1rem}
 .dark-block p{color:#fff;font-size:1rem;line-height:1.7}
@@ -226,7 +233,7 @@ h1,h2,h3,h4,h5{font-family:Georgia,serif;font-weight:700;line-height:1.2}
 .donut-legend-dot{width:13px;height:13px;border-radius:50%;flex-shrink:0}
 .donut-legend-pct{font-family:Georgia,serif;font-weight:700;font-size:1rem;color:#1a1a1a}
 footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px solid #EEEFF1}
-@media(max-width:900px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr 1fr}.wave-grid{grid-template-columns:1fr}.skillmix-grid{grid-template-columns:1fr}.map-grid{grid-template-columns:1fr}.svg-wrap{display:none}.donut-inner{flex-direction:column}}
+@media(max-width:900px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr 1fr}.wave-grid{grid-template-columns:1fr}.skillmix-grid{grid-template-columns:1fr}.map-grid{grid-template-columns:1fr}.svg-wrap{display:none}.donut-inner{flex-direction:column}.gantt{overflow-x:auto}.gantt .mhead,.gantt .row{min-width:900px}}
 @media(max-width:600px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr}.nav-links button{font-size:.7rem;padding:.4rem .5rem}.fbtn{font-size:.7rem;padding:.35rem .65rem}}
 </style>
 </head>
@@ -318,15 +325,47 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 3</span><span class="wave-name">Markt & Steuerung</span></div><div class="wave-subtitle">Marktnahe und steuernde Funktionen</div></div><div style="text-align:right"><div style="font-size:.65rem;color:#666;text-transform:uppercase">Dauer</div><div class="wave-duration">4 Wochen</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Vertrieb</li><li>Marketing & Kommunikation</li><li>Finanzen</li><li>Produkte & Services (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>8</strong></div><div>Profile: <strong>~22</strong></div><div>Start: <strong>KW 36 (September 2026)</strong></div></div></div></div>
 <div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 4</span><span class="wave-name">Strategie & Zukunft</span></div><div class="wave-subtitle">Transformatorische Enabler-Funktionen</div></div><div style="text-align:right"><div style="font-size:.65rem;color:#666;text-transform:uppercase">Dauer</div><div class="wave-duration">4 Wochen</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>IT</li><li>Mathematik & Analytics</li><li>Governance</li><li>Führung</li><li>Strategie, Projekt- & Prozessmanagement (2/2)</li><li>Produkte & Services (2/2)</li><li>Operativer Support (2/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>8</strong></div><div>Profile: <strong>~43</strong></div><div>Start: <strong>KW 40 (Oktober 2026)</strong></div></div></div></div>
 </div>
-<h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:1rem">Zeitliche Einordnung (Juni - Oktober 2026)</h3>
-<div style="background:#fff;border:1px solid #EEEFF1;padding:2rem;margin-bottom:2rem">
-<div style="display:flex;gap:4px;margin-bottom:1rem"><div style="flex:1;text-align:center;font-size:.75rem;font-weight:700;color:#666;padding:.4rem;border-bottom:2px solid #EEEFF1">Juni</div><div style="flex:1;text-align:center;font-size:.75rem;font-weight:700;color:#666;padding:.4rem;border-bottom:2px solid #EEEFF1">Juli</div><div style="flex:1;text-align:center;font-size:.75rem;font-weight:700;color:#666;padding:.4rem;border-bottom:2px solid #EEEFF1">August</div><div style="flex:1;text-align:center;font-size:.75rem;font-weight:700;color:#666;padding:.4rem;border-bottom:2px solid #EEEFF1">September</div><div style="flex:1;text-align:center;font-size:.75rem;font-weight:700;color:#666;padding:.4rem;border-bottom:2px solid #EEEFF1">Oktober</div></div>
-<div class="timeline-bar"><div class="timeline-label">Welle 1</div><div class="timeline-track"><div class="timeline-fill" style="left:0;width:30%">6 Wochen</div></div></div>
-<div class="timeline-bar"><div class="timeline-label">Welle 2</div><div class="timeline-track"><div class="timeline-fill" style="left:35%;width:20%">4 Wochen</div></div></div>
-<div class="timeline-bar"><div class="timeline-label">Welle 3</div><div class="timeline-track"><div class="timeline-fill" style="left:55%;width:20%">4 Wochen</div></div></div>
-<div class="timeline-bar"><div class="timeline-label">Welle 4</div><div class="timeline-track"><div class="timeline-fill" style="left:75%;width:20%">4 Wochen</div></div></div>
-<div style="font-size:.75rem;color:#666;margin-top:1rem;margin-left:120px"><span style="color:#E65100;font-weight:700">&#9670;</span> Nach Welle 1: Anpassung Methodik/Toolbox (Learnings)</div>
+
+<h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:.35rem">Zeitliche Einordnung (Juni - Oktober 2026)</h3>
+
+<div class="gantt">
+  <div class="mhead">
+    <div></div>
+    <div class="month">Juli 26</div>
+    <div class="month">August 26</div>
+    <div class="month">September 26</div>
+    <div class="month">Oktober 26</div>
+  </div>
+
+  <div class="row">
+    <div class="rlabel bold">Welle 1 – Pilot</div>
+    <div class="tl">
+      <div class="bar orange" style="left:6.25%;width:32.8125%">Deep-Dive Workshops Welle 1</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="rlabel bold">Welle 2</div>
+    <div class="tl">
+      <div class="bar orange" style="left:39.0625%;width:21.875%">Deep-Dive Workshops Welle 2</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="rlabel bold">Welle 3</div>
+    <div class="tl">
+      <div class="bar orange" style="left:53.90625%;width:21.875%">Deep-Dive Workshops Welle 3</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="rlabel bold">Welle 4</div>
+    <div class="tl">
+      <div class="bar orange" style="left:68.75%;width:21.875%">Deep-Dive Workshops Welle 4</div>
+    </div>
+  </div>
 </div>
+
 <div class="dark-block"><h3>Übergreifendes Ziel aller Wellen</h3><p>Analyse der Kompetenzanforderungen durch Trends und Treiber, wie neue Technologien (KI, Analytics) sowie des Potenzials zur Erreichung von Strategiezielen und Transformationsvorhaben.</p></div>
 <div class="hint-block">Hinweis: Für Welle 1 ist ein Zeitraum von 6 Wochen vorgesehen, ab Welle 2 eine Umsetzungsdauer von 4 Wochen pro Welle.</div>
 </div>
