@@ -108,7 +108,7 @@ h1,h2,h3,h4,h5{font-family:Georgia,serif;font-weight:700;line-height:1.2}
 .autom-pct{font-size:.82rem;font-weight:700;color:#333;min-width:32px}
 .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem}
 .scenario-card{padding:1.5rem;border:1px solid #EEEFF1;text-align:center}
-.scenario-card.ambitious{border-top:3px solid #FD5108}
+.scenario-card.ambitious{}
 .scenario-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem}
 .scenario-value{font-family:Georgia,serif;font-size:1.8rem;font-weight:700;margin-bottom:.5rem}
 .scenario-desc{font-size:.8rem;color:#666}
@@ -166,6 +166,16 @@ h1,h2,h3,h4,h5{font-family:Georgia,serif;font-weight:700;line-height:1.2}
 .mapping-block{padding:1.5rem 2rem;border-bottom:1px solid #EEEFF1}
 .mapping-block.today{background:#fff}
 .mapping-block.future{background:#FFFAF7}
+.driver-block{padding:1.5rem 2rem;border-bottom:1px solid #EEEFF1;background:linear-gradient(180deg,#fffdf8 0%,#fff6ef 100%)}
+.driver-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.driver-kicker{display:inline-flex;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;padding:.3rem .75rem;border-radius:12px;background:#FFE7DB;color:#C4470B;margin-bottom:.65rem}
+.driver-head h5{font-family:Georgia,serif;font-size:1.05rem;color:#1a1a1a}
+.driver-head p{font-size:.82rem;color:#666;max-width:640px;line-height:1.5}
+.driver-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.driver-card{background:#fff;border:1px solid #F1D8CA;border-top:3px solid #FD5108;padding:1rem;min-height:150px;box-shadow:0 4px 14px rgba(26,26,26,.04)}
+.driver-tag{display:inline-flex;font-size:.64rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#FD5108;background:#FFF1E8;padding:.22rem .55rem;border-radius:999px;margin-bottom:.75rem}
+.driver-card h6{font-size:.9rem;line-height:1.3;color:#1a1a1a;margin-bottom:.45rem}
+.driver-card p{font-size:.8rem;line-height:1.5;color:#666}
 .map-stage-lbl{display:inline-flex;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:1rem;padding:.3rem .75rem;border-radius:12px}
 .map-stage-lbl.today{background:#1a1a1a;color:#fff}
 .map-stage-lbl.future{background:#FD5108;color:#fff}
@@ -201,9 +211,14 @@ h1,h2,h3,h4,h5{font-family:Georgia,serif;font-weight:700;line-height:1.2}
 .spider-wrap{background:#F5F7F8;border:1px solid #EEEFF1;padding:2rem;margin-bottom:2.5rem}
 .spider-wrap h3{font-family:Georgia,serif;font-size:1.15rem;margin-bottom:1.5rem}
 .spider-inner{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap}
+.spider-canvas-wrap{position:relative;display:inline-block}
 .spider-leg{display:flex;flex-direction:column;gap:.6rem;min-width:180px}
 .leg-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem}
 .leg-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.spider-tip{position:absolute;display:none;pointer-events:none;background:#fff;border:1px solid #ddd;box-shadow:0 2px 10px rgba(0,0,0,.12);padding:.45rem .6rem;font-size:.74rem;line-height:1.35;color:#333;min-width:150px;z-index:5}
+.spider-tip strong{display:block;font-family:Georgia,serif;font-size:.78rem;margin-bottom:.2rem;color:#1a1a1a}
+@media(max-width:1100px){.driver-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.driver-grid{grid-template-columns:1fr}.driver-block{padding:1.25rem}}
 /* Measures */
 .measure-table{width:100%;border-collapse:collapse;font-size:.85rem;margin-bottom:2.5rem}
 .measure-table th{background:#1a1a1a;color:#fff;text-align:left;padding:.75rem 1rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
@@ -241,6 +256,121 @@ h1,h2,h3,h4,h5{font-family:Georgia,serif;font-weight:700;line-height:1.2}
 footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px solid #EEEFF1}
 @media(max-width:900px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr 1fr}.wave-grid{grid-template-columns:1fr}.skillmix-grid{grid-template-columns:1fr}.map-grid{grid-template-columns:1fr}.svg-wrap{display:none}.donut-inner{flex-direction:column}.gantt{overflow-x:auto}.gantt .mhead,.gantt .row{min-width:900px}}
 @media(max-width:600px){.kpi-grid,.scenario-grid,.insight-grid{grid-template-columns:1fr}.nav-links button{font-size:.7rem;padding:.4rem .5rem}.fbtn{font-size:.7rem;padding:.35rem .65rem}}
+
+/* ===== Datenherkunft (Variante: B + C kombiniert) ===== */
+/* Inline-Marker fuer belegte Werte */
+.src-q{
+  border-bottom:1px solid #0A6B3B;
+  padding-bottom:1px;
+  cursor:help;
+}
+body.hide-src .src-q{ border-bottom:none; }
+
+/* Modul-Box mit drei Listen */
+.src-box{
+  border:1px solid #E5E7EB;
+  background:#FAFAFA;
+  padding:.9rem 1.1rem;
+  margin:0 0 1.5rem 0;
+  font-size:.82rem;
+  line-height:1.55;
+  color:#333;
+  font-family:Arial,Helvetica,sans-serif;
+}
+.src-box .src-box-title{
+  font-family:Georgia,serif;
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#000;
+  margin-bottom:.55rem;
+  padding-bottom:.4rem;
+  border-bottom:1px solid #E5E7EB;
+}
+.src-box .src-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
+@media (max-width:780px){
+  .src-box .src-grid{ grid-template-columns:1fr; }
+}
+.src-box h5{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  margin:0 0 .3rem 0;
+  padding-left:.5rem;
+  border-left:3px solid #999;
+}
+.src-box .src-q-h{ border-left-color:#0A6B3B; color:#0A6B3B; }
+.src-box .src-t-h{ border-left-color:#B8860B; color:#8A5A00; }
+.src-box .src-f-h{ border-left-color:#C0392B; color:#9B1C1C; }
+.src-box ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.src-box li{
+  position:relative;
+  padding:.15rem 0 .15rem .85rem;
+  font-size:.78rem;
+}
+.src-box li:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.55rem;
+  width:4px;
+  height:4px;
+  background:#999;
+  border-radius:50%;
+}
+
+/* Globaler Disclaimer / Legende oben */
+.src-legend{
+  display:flex;
+  gap:1.25rem;
+  align-items:center;
+  flex-wrap:wrap;
+  font-size:.78rem;
+  color:#333;
+  background:#FFFBF5;
+  border:1px solid #F0E2C5;
+  border-left:3px solid #B8860B;
+  padding:.65rem .9rem;
+  margin:0 0 1.25rem 0;
+  font-family:Arial,Helvetica,sans-serif;
+}
+.src-legend strong{
+  font-family:Georgia,serif;
+  font-weight:700;
+  color:#000;
+}
+.src-legend .src-q-inline{
+  border-bottom:1px solid #0A6B3B;
+}
+.src-legend button{
+  margin-left:auto;
+  border:1px solid #999;
+  background:#fff;
+  color:#000;
+  padding:.3rem .7rem;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  cursor:pointer;
+  font-family:Arial,Helvetica,sans-serif;
+}
+.src-legend button:hover{ border-color:#FD5108; color:#FD5108; }
+
+/* Toggle-Verhalten */
+body.hide-src .src-box{ display:none !important; }
+
 </style>
 </head>
 <body>
@@ -259,11 +389,18 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 </nav>
 
 <div class="wrap">
+
+<div class="src-legend" id="srcLegend">
+  <strong>Datenherkunft:</strong>
+  <span>Werte mit <span class="src-q-inline">grüner Unterstreichung</span> sind aus Ausschreibung/Anlagen belegt. Alle übrigen Werte sind illustrative Schätzungen (Dummy-Daten). Pro Modul findet sich darunter eine kompakte Aufschlüsselung.</span>
+  <button id="toggleSrc" type="button">Hinweisboxen ausblenden</button>
+</div>
+
 <div style="padding:3rem 0 2rem">
 <div class="cover-top">PwC People & Organisation - Strategische Personalplanung - Demo</div>
 <h1 class="cover-title">MVP zur Steuerung der personellen Implikationen von Transformationsvorhaben</h1>
 <p class="cover-subtitle">Ein datengestützter, treiberbasierter Ansatz zur Identifikation zukünftiger Personalbedarfe, Skill-Gaps und strategischer Maßnahmen - mit integrierter Betrachtung von KI- und Technologieimplikationen auf Basis der bestehenden Jobarchitektur.</p>
-<div class="cover-footer">Illustrativ - Dummy-Daten | Zeithorizont bis 2030 | 14 Jobfamilien, 38 Jobcluster, 130 Jobprofile | ca. 8.200 FTE</div>
+<div class="cover-footer">Illustrativ - Dummy-Daten | <span class="src-q" title="Quelle: Ausschreibung SPP, S. 7">Zeithorizont bis 2030</span> | <span class="src-q" title="Quelle: Anlage 2 (Wellenlogik); Ausschreibung SPP nennt 37 Jobcluster">14 Jobfamilien, 38 Jobcluster, 130 Jobprofile</span> | <span class="src-q" title="Quelle: Ausschreibung SPP, S. 3">ca. 8.200 FTE</span></div>
 </div>
 
 <!-- OVERVIEW -->
@@ -271,9 +408,10 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <div class="section-label">Modul 01</div>
 <h2 class="section-title">Gesamtblick Personalkörper</h2>
 <p class="section-finding">Treiberbasierte Gesamtsicht auf alle 14 Jobfamilien mit Supply-Demand-Modellierung, Gap-Identifikation und Priorisierung der kritischsten Handlungsfelder.</p>
+<div class="src-box"><div class="src-box-title">Datenherkunft - Gesamtblick Personalkörper</div><div class="src-grid"><div><h5 class="src-q-h">Aus Quellen belegt</h5><ul><li>Gesamtgröße 8.200 FTE (Ausschreibung S. 3)</li><li>14 Jobfamilien, 38 Jobcluster, 130 Jobprofile (Anlage 2)</li><li>Zeithorizont 2030 (Ausschreibung S. 7)</li><li>Methodik: treiberbasierte Gesamtsicht, Gap-Sicht, Maßnahmen-Hebel (Ausschreibung Phase 1)</li></ul></div><div><h5 class="src-t-h">Teilbelegt (Struktur belegt, Werte illustrativ)</h5><ul><li>Jobfamilien-Namen und Welleneinordnung (Anlage 2); Reihenfolge in Tabelle illustrativ</li></ul></div><div><h5 class="src-f-h">Illustrativ (Dummy-Daten)</h5><ul><li>Prognostizierter Bedarf 2030 (7.150 FTE), Netto-Delta -1.050, neue Rollen +580</li><li>Alle FTE-Werte, Deltas, Automatisierungspotenziale und Kritikalitäten je Jobfamilie</li><li>Supply-/Demand-Verlauf (Chart-Werte)</li><li>Szenarienwerte (-8 % / -15 % / -22 %, Reskilling-Volumina, Investitionsbedarf)</li></ul></div></div></div>
 <hr class="orange-rule">
 <div class="kpi-grid">
-<div class="kpi-card"><div class="kpi-label">Aktuelle FTE</div><div class="kpi-value">8.200</div><div class="kpi-desc">Gesamter Personalkörper 2024</div></div>
+<div class="kpi-card"><div class="kpi-label">Aktuelle FTE</div><div class="kpi-value"><span class="src-q" title="Quelle: Ausschreibung SPP, S. 3">8.200</span></div><div class="kpi-desc">Gesamter Personalkörper 2024</div></div>
 <div class="kpi-card"><div class="kpi-label">Progn. Bedarf 2030</div><div class="kpi-value">7.150</div><div class="kpi-desc">Treiberbasierte Modellierung</div></div>
 <div class="kpi-card"><div class="kpi-label">Netto-Delta</div><div class="kpi-value">-1.050</div><div class="kpi-desc">Reduktion durch Transformation</div></div>
 <div class="kpi-card"><div class="kpi-label">Neue Rollen</div><div class="kpi-value">+580</div><div class="kpi-desc">Aufbau in Zukunftsfeldern</div></div>
@@ -308,7 +446,7 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <div class="scenario-grid">
 <div class="scenario-card"><div class="scenario-label" style="color:#1a1a1a">Konservativ</div><div class="scenario-value" style="color:#1a1a1a">-8%</div><div class="scenario-desc">Netto-FTE-Reduktion bis 2030</div><div class="scenario-footer">+320 neue Rollen | 1.200 Reskilling</div></div>
 <div class="scenario-card"><div class="scenario-label" style="color:#b8860b">Base Case</div><div class="scenario-value" style="color:#b8860b">-15%</div><div class="scenario-desc">Netto-FTE-Reduktion bis 2030</div><div class="scenario-footer">+580 neue Rollen | 2.100 Reskilling</div></div>
-<div class="scenario-card ambitious"><div class="scenario-label" style="color:#FD5108">Ambitioniert</div><div class="scenario-value" style="color:#FD5108">-22%</div><div class="scenario-desc">Netto-FTE-Reduktion bis 2030</div><div class="scenario-footer">+850 neue Rollen | 3.200 Reskilling</div></div>
+<div class="scenario-card"><div class="scenario-label" style="color:#FD5108">Ambitioniert</div><div class="scenario-value" style="color:#FD5108">-22%</div><div class="scenario-desc">Netto-FTE-Reduktion bis 2030</div><div class="scenario-footer">+850 neue Rollen | 3.200 Reskilling</div></div>
 </div>
 <p style="font-size:.75rem;color:#666;font-style:italic">Illustrativ, keine Prognose.</p>
 </div>
@@ -318,12 +456,13 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <div class="section-label">Wellenlogik</div>
 <h2 class="section-title">Wellenmodell der Strategischen Personalplanung</h2>
 <p class="section-finding">Umsetzung in 4 Wellen auf Basis der Jobarchitektur mit 14 Jobfamilien, 38 Jobclustern und 130 Jobprofilen.</p>
+<div class="src-box"><div class="src-box-title">Datenherkunft - Wellenmodell der Strategischen Personalplanung</div><div class="src-grid"><div><h5 class="src-q-h">Aus Quellen belegt</h5><ul><li>Vier Wellen mit jeweils 4-6 Wochen (Anlage 2)</li><li>Welleninhalte je Jobfamilie inkl. Splits 1/2 und 2/2 (Anlage 2)</li><li>Cluster- und Profilanzahl je Welle 6/~8, 5/~15, 8/~22, 8/~43 (Anlage 2)</li><li>Projektabschluss Ende Oktober 2026 (Ausschreibung S. 5)</li></ul></div><div><h5 class="src-t-h">Teilbelegt (Struktur belegt, Werte illustrativ)</h5><ul><li>Konkrete Monatszuordnung Juli-Oktober 2026 (Rahmen aus Ausschreibung, Detail-Timing illustrativ)</li><li>Zuordnung Produkte & Services in Welle 3 (Anlage 2 ordnet P&S 1/2 in Welle 2 zu)</li></ul></div><div><h5 class="src-f-h">Illustrativ (Dummy-Daten)</h5><ul><li>Jegliche FTE-/Profilzahlen-Beispiele in den Wellen-Karten</li><li>Detail-Storyline / Pilot-Lessons-Learned</li></ul></div></div></div>
 <hr class="orange-rule">
 <div class="kpi-grid">
-<div class="kpi-card"><div class="kpi-label">Anzahl Wellen</div><div class="kpi-value">4</div><div class="kpi-desc">Sequenzielle Umsetzung</div></div>
-<div class="kpi-card"><div class="kpi-label">Zeitrahmen</div><div class="kpi-value">4-6 Wo.</div><div class="kpi-desc">Pro Welle</div></div>
-<div class="kpi-card"><div class="kpi-label">Jobarchitektur</div><div class="kpi-value">14/38/130</div><div class="kpi-desc">Familien / Cluster / Profile</div></div>
-<div class="kpi-card"><div class="kpi-label">Deadline</div><div class="kpi-value">Okt. 2026</div><div class="kpi-desc">Managementfähige Ergebnisse</div></div>
+<div class="kpi-card"><div class="kpi-label">Anzahl Wellen</div><div class="kpi-value"><span class="src-q" title="Quelle: Anlage 2 (Wellenlogik)">4</span></div><div class="kpi-desc">Sequenzielle Umsetzung</div></div>
+<div class="kpi-card"><div class="kpi-label">Zeitrahmen</div><div class="kpi-value"><span class="src-q" title="Quelle: Anlage 2 (Wellenlogik)">4-6 Wo.</span></div><div class="kpi-desc">Pro Welle</div></div>
+<div class="kpi-card"><div class="kpi-label">Jobarchitektur</div><div class="kpi-value"><span class="src-q" title="Quelle: Anlage 1 + Anlage 2; Ausschreibung nennt 37 Cluster">14/38/130</span></div><div class="kpi-desc">Familien / Cluster / Profile</div></div>
+<div class="kpi-card"><div class="kpi-label">Deadline</div><div class="kpi-value"><span class="src-q" title="Quelle: Ausschreibung SPP, S. 5">Okt. 2026</span></div><div class="kpi-desc">Managementfähige Ergebnisse</div></div>
 </div>
 <div class="wave-grid">
 <div class="wave-card"><div class="wave-header"><div><div style="margin-bottom:.35rem"><span class="wave-badge">Welle 1</span><span class="wave-name">Pilot</span></div><div class="wave-subtitle">Prozess- und volumenstarke Jobfamilien sowie Zentralfunktion</div></div></div><div class="wave-body"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#1a1a1a;margin-bottom:.5rem">Betroffene Jobfamilien</div><ul><li>Kundenservice & Vertragsbearbeitung (1/2)</li><li>Schaden & Leistung</li><li>HR</li><li>Operativer Support (1/2)</li></ul><div class="wave-meta"><div>Cluster: <strong>6</strong></div><div>Profile: <strong>~8</strong></div></div></div></div>
@@ -379,16 +518,17 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <div class="section-label">Modul 02</div>
 <h2 class="section-title">KI-Impact auf Jobprofile</h2>
 <p class="section-finding">Systematische Analyse der Automatisierungspotenziale durch GenAI und klassische KI - aufgeschlüsselt nach Aufgabenclustern und Zeithorizont.</p>
+<div class="src-box"><div class="src-box-title">Datenherkunft - KI-Impact auf Jobprofile</div><div class="src-grid"><div><h5 class="src-q-h">Aus Quellen belegt</h5><ul><li>Analyseebene KI-/Automatisierungspotenzial und Produktivitätshebel (Ausschreibung S. 7)</li><li>Bezug auf Jobprofile/Skill-Mix (Anlage 1, Ausschreibung)</li></ul></div><div><h5 class="src-t-h">Teilbelegt (Struktur belegt, Werte illustrativ)</h5><ul><li>Aussage Skill-Mix-Shift / Reskilling-Notwendigkeit (Logik aus Ausschreibung, Werte illustrativ)</li></ul></div><div><h5 class="src-f-h">Illustrativ (Dummy-Daten)</h5><ul><li>Alle Aufgabencluster-Prozentwerte (z. B. 90 %, 78 %, 65 %)</li><li>Marktbenchmark 35-45 % automatisierbar fuer operative Familien</li><li>Zeithorizonte je Cluster und FTE-Auswirkungen</li><li>Technologie-Zuordnungen (GenAI, Agentic AI, RPA, ...)</li></ul></div></div></div>
 <hr class="orange-rule">
 <h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:1rem">KI-Implikationen nach Aufgabencluster</h3>
 <table class="data-table">
 <thead><tr><th>Aufgabencluster</th><th>Autom.-Potenzial</th><th>Zeithorizont</th><th>FTE-Auswirkung</th><th>Technologie</th></tr></thead>
 <tbody>
-<tr><td><strong>Datenerfassung & -pflege</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:90%;background:#FD5108"><div class="autom-pill-dot" style="background:#FD5108"></div></div></div><span class="autom-pct">90%</span></div></td><td>2025</td><td style="color:#FD5108;font-weight:700">-54% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
-<tr><td><strong>Dokumentenprüfung</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:85%;background:#FD5108"><div class="autom-pill-dot" style="background:#FD5108"></div></div></div><span class="autom-pct">85%</span></div></td><td>2025-2026</td><td style="color:#FD5108;font-weight:700">-51% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
-<tr><td><strong>Routineanfragen Kunden</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:78%;background:#FD5108"><div class="autom-pill-dot" style="background:#FD5108"></div></div></div><span class="autom-pct">78%</span></div></td><td>2025-2027</td><td style="color:#FD5108;font-weight:700">-47% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
-<tr><td><strong>Schadensmeldung Erstaufnahme</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:72%;background:#FD5108"><div class="autom-pill-dot" style="background:#FD5108"></div></div></div><span class="autom-pct">72%</span></div></td><td>2025-2026</td><td style="color:#FD5108;font-weight:700">-43% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
-<tr><td><strong>Berichtserstellung</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:70%;background:#FF9800"><div class="autom-pill-dot" style="background:#FF9800"></div></div></div><span class="autom-pct">70%</span></div></td><td>2025-2026</td><td style="color:#FD5108;font-weight:700">-42% FTE</td><td style="color:#666;font-size:.8rem">GenAI + ML</td></tr>
+<tr><td><strong>Datenerfassung & -pflege</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:90%;background:#FD5108"><div class="autom-pill-dot" style="background:#FD5108"></div></div></div><span class="autom-pct">90%</span></div></td><td>2026</td><td style="color:#FD5108;font-weight:700">-54% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
+<tr><td><strong>Dokumentenprüfung</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:85%;background:#FD5108"><div class="autom-pill-dot" style="background:#FD5108"></div></div></div><span class="autom-pct">85%</span></div></td><td>2026</td><td style="color:#FD5108;font-weight:700">-51% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
+<tr><td><strong>Routineanfragen Kunden</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:78%;background:#FD5108"><div class="autom-pill-dot" style="background:#FD5108"></div></div></div><span class="autom-pct">78%</span></div></td><td>2026-2027</td><td style="color:#FD5108;font-weight:700">-47% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
+<tr><td><strong>Schadensmeldung Erstaufnahme</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:72%;background:#FD5108"><div class="autom-pill-dot" style="background:#FD5108"></div></div></div><span class="autom-pct">72%</span></div></td><td>2026</td><td style="color:#FD5108;font-weight:700">-43% FTE</td><td style="color:#666;font-size:.8rem">GenAI + RPA</td></tr>
+<tr><td><strong>Berichtserstellung</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:70%;background:#FF9800"><div class="autom-pill-dot" style="background:#FF9800"></div></div></div><span class="autom-pct">70%</span></div></td><td>2026</td><td style="color:#FD5108;font-weight:700">-42% FTE</td><td style="color:#666;font-size:.8rem">GenAI + ML</td></tr>
 <tr><td><strong>Risikobewertung Standard</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:65%;background:#FF9800"><div class="autom-pill-dot" style="background:#FF9800"></div></div></div><span class="autom-pct">65%</span></div></td><td>2026-2027</td><td style="color:#FD5108;font-weight:700">-39% FTE</td><td style="color:#666;font-size:.8rem">GenAI + ML</td></tr>
 <tr><td><strong>Vertragserstellung</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:60%;background:#FF9800"><div class="autom-pill-dot" style="background:#FF9800"></div></div></div><span class="autom-pct">60%</span></div></td><td>2026-2027</td><td style="color:#FD5108;font-weight:700">-36% FTE</td><td style="color:#666;font-size:.8rem">GenAI + ML</td></tr>
 <tr><td><strong>Compliance-Monitoring</strong></td><td><div class="autom-bar-wrap"><div class="autom-pill-track"><div class="autom-pill-fill" style="width:55%;background:#FF9800"><div class="autom-pill-dot" style="background:#FF9800"></div></div></div><span class="autom-pct">55%</span></div></td><td>2026-2028</td><td style="color:#FD5108;font-weight:700">-33% FTE</td><td style="color:#666;font-size:.8rem">GenAI + ML</td></tr>
@@ -402,13 +542,17 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <div class="section-label">Modul 03</div>
 <h2 class="section-title">Zielbilder & Blaupausen</h2>
 <p class="section-finding">Zukunftsgerichtete Zielbilder für priorisierte Jobfamilien – mit dreistufiger Logik: <strong>Tätigkeiten → Skills → Skill-Mix</strong>.</p>
+<div class="src-box"><div class="src-box-title">Datenherkunft - Zielbilder & Blaupausen</div><div class="src-grid"><div><h5 class="src-q-h">Aus Quellen belegt</h5><ul><li>Konzept Tätigkeiten -> Skills -> Skill-Mix -> Zielbild/Blaupause (Ausschreibung Phase 2)</li><li>Kompetenzkategorien Fach-, Methoden-, persönliche, Führungskompetenzen (Anlage 1)</li></ul></div><div><h5 class="src-t-h">Teilbelegt (Struktur belegt, Werte illustrativ)</h5><ul><li>Beispielhafte Jobfamilie/Profil als Illustration (Architektur belegt, Auswahl illustrativ)</li></ul></div><div><h5 class="src-f-h">Illustrativ (Dummy-Daten)</h5><ul><li>Skill-Radar-Werte Heute vs. 2030</li><li>Konkrete Skill-Bezeichnungen und Ausprägungsgrade</li></ul></div></div></div>
 <hr class="orange-rule">
 <div class="family-selector" id="bp-sel"></div>
 <div id="bp-card"></div>
 <div class="spider-wrap">
   <h3>Skill-Radar: Heute vs. Zielbild 2030</h3>
   <div class="spider-inner">
-    <canvas id="spiderCv" width="360" height="360"></canvas>
+    <div class="spider-canvas-wrap">
+      <canvas id="spiderCv" width="460" height="460"></canvas>
+      <div id="spiderTip" class="spider-tip"></div>
+    </div>
     <div class="spider-leg">
       <div class="leg-item"><div class="leg-dot" style="background:#666"></div>Skill-Mix heute</div>
       <div class="leg-item"><div class="leg-dot" style="background:#FD5108"></div>Zielbild 2030</div>
@@ -423,6 +567,7 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <div class="section-label">Modul 04</div>
 <h2 class="section-title">Trend- und Impulsradar</h2>
 <p class="section-finding">Externe Technologie- und Markttrends mit systematischer Bewertung ihrer Relevanz und Auswirkungen auf Jobprofile und Kompetenzanforderungen im Versicherungsumfeld.</p>
+<div class="src-box"><div class="src-box-title">Datenherkunft - Trend- und Impulsradar</div><div class="src-grid"><div><h5 class="src-q-h">Aus Quellen belegt</h5><ul><li>Anforderung, KI-/Technologietrends in die SPP einzubinden (Ausschreibung S. 7)</li></ul></div><div><h5 class="src-t-h">Teilbelegt (Struktur belegt, Werte illustrativ)</h5><ul><li style="color:#888;font-style:italic">keine</li></ul></div><div><h5 class="src-f-h">Illustrativ (Dummy-Daten)</h5><ul><li>Auswahl der Trendthemen (GenAI, Agentic AI, Predictive Analytics, Low-Code, Embedded Insurance, Sustainability Reporting, Quantum Computing, Underwriting-Automatisierung)</li><li>Score-Werte 95 / 90 / 82 / 78 / 72 / 68 / 60 / 35</li><li>KPIs 72 % / 45 % / 3.2x</li><li>Zeithorizonte und Impact-Aussagen je Trend</li></ul></div></div></div>
 <hr class="orange-rule">
 <div class="trend-item"><div class="trend-score">95</div><div class="trend-content"><h4>Generative AI im Kundenservice</h4><div class="trend-meta">Impact: <strong class="high">Transformativ</strong> &nbsp;|&nbsp; Zeithorizont: <strong>1-2 Jahre</strong></div></div><span class="badge badge-critical">Kritisch</span></div>
 <div class="trend-item"><div class="trend-score">90</div><div class="trend-content"><h4>Agentic AI in der Schadensbearbeitung</h4><div class="trend-meta">Impact: <strong class="high">Transformativ</strong> &nbsp;|&nbsp; Zeithorizont: <strong>2-3 Jahre</strong></div></div><span class="badge badge-critical">Kritisch</span></div>
@@ -445,6 +590,7 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#666;border-top:1px 
 <div class="section-label">Modul 05</div>
 <h2 class="section-title">Maßnahmen & Priorisierung</h2>
 <p class="section-finding">Priorisierter Maßnahmenkatalog mit Make/Buy/Borrow/Automate-Logik - abgeleitet aus den identifizierten Gaps und strategischen Handlungsbedarfen.</p>
+<div class="src-box"><div class="src-box-title">Datenherkunft - Maßnahmen & Priorisierung</div><div class="src-grid"><div><h5 class="src-q-h">Aus Quellen belegt</h5><ul><li>Maßnahmen-Hebel Recruiting, Qualifizierung, Sourcing, Umbau, Automatisierung (Ausschreibung S. 7)</li><li>Logik Make / Buy / Borrow / Automate (Ausschreibung)</li><li>Maßnahmen-Katalog als Lieferergebnis Phase 2 (Ausschreibung S. 9)</li></ul></div><div><h5 class="src-t-h">Teilbelegt (Struktur belegt, Werte illustrativ)</h5><ul><li>Strukturierung in Prio/Impact/Aufwand (Methodik plausibel, Werte illustrativ)</li></ul></div><div><h5 class="src-f-h">Illustrativ (Dummy-Daten)</h5><ul><li>Konkrete Einzelmassnahmen (Reskilling KI & Data, Recruiting Data Scientists, GenAI-Rollout, AI CoE, ...)</li><li>Maßnahmen-Mix-Verteilung (z. B. 35 / 20 / 25 / 10 / 10)</li><li>Zeit-/FTE-/Kosten-Schätzungen je Maßnahme</li></ul></div></div></div>
 <hr class="orange-rule">
 <h3 style="font-family:Georgia,serif;font-size:1.4rem;margin-bottom:1rem">Detaillierter Maßnahmenkatalog</h3>
 <table class="measure-table">
@@ -490,6 +636,7 @@ function showTab(tabId, btn) {
   btn.classList.add('active');
   if(tabId==='measures') drawDonutSVG();
   if(tabId==='blueprints') { bpRender(); }
+  if(tabId==='overview' && window.__supplyDemandDraw) { requestAnimationFrame(window.__supplyDemandDraw); }
 }
 
 /* ── Supply-Demand Chart ─────────────────────────────────────────── */
@@ -501,7 +648,7 @@ function showTab(tabId, btn) {
   const tooltip=document.getElementById('chartTooltip');
   const ttYear=document.getElementById('ttYear'),ttSup=document.getElementById('ttSupply'),ttDem=document.getElementById('ttDemand');
   function draw(){
-    const dpr=window.devicePixelRatio||1,W=canvas.parentElement.clientWidth-48,H=300;
+    const dpr=window.devicePixelRatio||1,W=Math.max(canvas.parentElement.clientWidth-48,400),H=300;
     canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';
     const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
     const pad={top:20,right:30,bottom:50,left:65},cW=W-pad.left-pad.right,cH=H-pad.top-pad.bottom;
@@ -518,7 +665,7 @@ function showTab(tabId, btn) {
     ctx.fillStyle='#666';ctx.font='11px Arial';ctx.textAlign='center';years.forEach((y,i)=>ctx.fillText(y,xPos(i),H-pad.bottom+18));
     canvas._xPos=xPos;canvas._pad=pad;canvas._cW=cW;
   }
-  draw();window.addEventListener('resize',draw);
+  window.__supplyDemandDraw=draw;draw();requestAnimationFrame(function(){requestAnimationFrame(draw);});window.addEventListener('load',draw);window.addEventListener('resize',draw);
   canvas.addEventListener('mousemove',function(e){
     const rect=canvas.getBoundingClientRect(),mx=e.clientX-rect.left;
     const pad=canvas._pad,cW=canvas._cW;if(!cW)return;
@@ -586,118 +733,138 @@ function drawDonutSVG(){
 const BPD=[
  {id:"kundenservice",n:"Kundenservice & Vertragsbearbeitung",w:1,fte:1420,z:980,a:48,
   sub:"1.420 FTE aktuell → 980 FTE Zielbild",
-  t:[["Telefonische Beratung",40],["Schriftbearbeitung",30],["Systemnavigation",20],["Beschwerdemanagement",10]],
-  g:[["KI-Steuerung & Eskalation",30],["Komplexberatung",25],["Customer Experience",20],["Prozessoptimierung",15],["Data Literacy",10]],
-  f:"Die Jobfamilie wandelt sich von einer primär operativen hin zu einer steuernden, KI-augmentierten Funktion.",
-  sl:["Telefonberatung","Schriftbearb.","Systemnavig.","Beschwerdemgmt.","KI-Steuerung","Komplexberat.","CX","Data Literacy"],
-  sv:[40,30,20,10,5,5,5,5],gv:[10,5,10,5,30,25,20,10],
+  t:[["Beratung & Empathie",35],["Schriftbearbeitung & QA",30],["System- & Prozesssteuerung",15],["Produkt- & Regelwissen",15],["Data Literacy & KI-Steuerung",5]],
+  g:[["Beratung & Empathie",30],["Schriftbearbeitung & QA",15],["System- & Prozesssteuerung",20],["Produkt- & Regelwissen",10],["Data Literacy & KI-Steuerung",25]],
+  d:[{k:"Kundenerwartung",h:"24/7-Service und konsistente Antwortqualität",t:"Kunden erwarten sofortige, kanalübergreifende Antworten. Standardanliegen müssen deshalb skalierbar durch KI abgefangen werden."},
+   {k:"Regulatorik",h:"Dokumentations- und Nachweispflichten steigen",t:"Beratung und Eskalationen müssen revisionssicher gesteuert werden. Das erfordert mehr QA, Governance und Steuerungskompetenz."},
+   {k:"Technologie",h:"GenAI übernimmt Standardkorrespondenz",t:"Schriftbearbeitung und einfache Auskünfte werden automatisiert. Der Mehrwert der Rolle verlagert sich auf Ausnahmefälle und komplexe Beratung."},
+   {k:"Wettbewerb",h:"Customer Experience wird zum Differenzierungsfaktor",t:"Versicherer konkurrieren stärker über Servicequalität. Dadurch gewinnen Empathie, Journey-Design und Prozessverbesserung an Gewicht."}],
+  f:"Die Skill-Basis bleibt erhalten, verschiebt sich aber klar von operativer Bearbeitung zu Steuerung, Qualitätssicherung und KI-gestützter Beratung.",
+  sl:["Beratung","Schrift+QA","System/Prozess","Regelwissen","Data+KI"],
+  sv:[35,30,15,15,5],gv:[30,15,20,10,25],
   tt:[{id:"t1",l:"Eingehende Kundenanrufe entgegennehmen & manuell beantworten",s:"~30% der Arbeitszeit",lk:["s1","s4"]},
-      {id:"t2",l:"Vertragsänderungen manuell in Bestandssystemen erfassen",s:"~22% der Arbeitszeit",lk:["s2","s3"]},
-      {id:"t3",l:"Schriftliche Korrespondenz (Briefe, E-Mails) verfassen",s:"~18% der Arbeitszeit",lk:["s2","s4"]},
-      {id:"t4",l:"Standard-Dokumente prüfen & ablegen",s:"~15% der Arbeitszeit",lk:["s3"]},
-      {id:"t5",l:"Beschwerden bearbeiten & eskalieren",s:"~10% der Arbeitszeit",lk:["s1","s5"]},
-      {id:"t6",l:"Interne Rückfragen an Fachabteilungen klären",s:"~5% der Arbeitszeit",lk:["s5"]}],
-  ts:[{id:"s1",l:"Telefonische Beratung & Gesprächsführung",s:"40% Skill-Mix",lk:["t1","t5"]},
-      {id:"s2",l:"Schriftbearbeitung & Korrespondenz",s:"30% Skill-Mix",lk:["t2","t3"]},
-      {id:"s3",l:"Systemnavigation Bestandssysteme",s:"20% Skill-Mix",lk:["t2","t4"]},
-      {id:"s4",l:"Produkt- & Tarifwissen",s:"5% Skill-Mix",lk:["t1","t3"]},
-      {id:"s5",l:"Beschwerdemanagement",s:"5% Skill-Mix",lk:["t5","t6"]}],
-  ft:[{id:"t1f",l:"KI-Agenten steuern, überwachen & Eskalationen freigeben",s:"~28% der Arbeitszeit",lk:["s1f","s5f"]},
-      {id:"t2f",l:"Komplexe Beratung in beratungsintensiven Lebenslagen",s:"~25% der Arbeitszeit",lk:["s2f","s4f"]},
-      {id:"t3f",l:"Customer-Journey-Analysen & Verbesserungsmaßnahmen ableiten",s:"~18% der Arbeitszeit",lk:["s3f","s4f"]},
-      {id:"t4f",l:"Quality Assurance der KI-Outputs (Sampling, Re-Training)",s:"~15% der Arbeitszeit",lk:["s1f","s5f"]},
-      {id:"t5f",l:"Prozesse identifizieren & Automatisierungs-Stories formulieren",s:"~10% der Arbeitszeit",lk:["s5f"]},
-      {id:"t6f",l:"Empathische Konfliktbearbeitung in Hochrisiko-Fällen",s:"~4% der Arbeitszeit",lk:["s2f","s3f"]}],
-  fs:[{id:"s1f",l:"KI-Steuerung, Prompting & Eskalation",s:"30% Skill-Mix",lk:["t1f","t4f"]},
-      {id:"s2f",l:"Komplexberatung & Empathie",s:"25% Skill-Mix",lk:["t2f","t6f"]},
-      {id:"s3f",l:"Customer Experience Design",s:"20% Skill-Mix",lk:["t3f","t6f"]},
-      {id:"s4f",l:"Prozessanalyse & Optimierung",s:"15% Skill-Mix",lk:["t2f","t3f"]},
-      {id:"s5f",l:"Data Literacy & QA-Methodik",s:"10% Skill-Mix",lk:["t1f","t4f","t5f"]}]
+    {id:"t2",l:"Vertragsänderungen manuell in Bestandssystemen erfassen",s:"~22% der Arbeitszeit",lk:["s2","s3"]},
+    {id:"t3",l:"Schriftliche Korrespondenz (Briefe, E-Mails) verfassen",s:"~18% der Arbeitszeit",lk:["s2","s4"]},
+    {id:"t4",l:"Standard-Dokumente prüfen & ablegen",s:"~15% der Arbeitszeit",lk:["s2","s3"]},
+    {id:"t5",l:"Beschwerden bearbeiten & eskalieren",s:"~10% der Arbeitszeit",lk:["s1","s4"]},
+    {id:"t6",l:"Interne Rückfragen an Fachabteilungen klären",s:"~5% der Arbeitszeit",lk:["s5"]}],
+  ts:[{id:"s1",l:"Beratung & Empathie",s:"35% Skill-Mix",lk:["t1","t5"]},
+    {id:"s2",l:"Schriftbearbeitung & QA",s:"30% Skill-Mix",lk:["t2","t3","t4"]},
+    {id:"s3",l:"System- & Prozesssteuerung",s:"15% Skill-Mix",lk:["t2","t4"]},
+    {id:"s4",l:"Produkt- & Regelwissen",s:"15% Skill-Mix",lk:["t1","t3","t5"]},
+    {id:"s5",l:"Data Literacy & KI-Steuerung",s:"5% Skill-Mix",lk:["t6"]}],
+  ft:[{id:"t1f",l:"KI-Agenten steuern, überwachen & Eskalationen freigeben",s:"~28% der Arbeitszeit",lk:["s3f","s5f"]},
+    {id:"t2f",l:"Komplexe Beratung in beratungsintensiven Lebenslagen",s:"~25% der Arbeitszeit",lk:["s1f","s4f"]},
+    {id:"t3f",l:"Customer-Journey-Analysen & Verbesserungsmaßnahmen ableiten",s:"~18% der Arbeitszeit",lk:["s3f","s5f"]},
+    {id:"t4f",l:"Quality Assurance der KI-Outputs (Sampling, Re-Training)",s:"~15% der Arbeitszeit",lk:["s2f","s5f"]},
+    {id:"t5f",l:"Prozesse identifizieren & Automatisierungs-Stories formulieren",s:"~10% der Arbeitszeit",lk:["s3f","s5f"]},
+    {id:"t6f",l:"Empathische Konfliktbearbeitung in Hochrisiko-Fällen",s:"~4% der Arbeitszeit",lk:["s1f"]}],
+  fs:[{id:"s1f",l:"Beratung & Empathie",s:"30% Skill-Mix",lk:["t2f","t6f"]},
+    {id:"s2f",l:"Schriftbearbeitung & QA",s:"15% Skill-Mix",lk:["t4f"]},
+    {id:"s3f",l:"System- & Prozesssteuerung",s:"20% Skill-Mix",lk:["t1f","t3f","t5f"]},
+    {id:"s4f",l:"Produkt- & Regelwissen",s:"10% Skill-Mix",lk:["t2f"]},
+    {id:"s5f",l:"Data Literacy & KI-Steuerung",s:"25% Skill-Mix",lk:["t1f","t3f","t4f","t5f"]}]
  },
  {id:"schaden",n:"Schaden & Leistung",w:1,fte:1180,z:820,a:42,
   sub:"1.180 FTE aktuell → 820 FTE Zielbild",
-  t:[["Sachbearbeitung manuell",45],["Regelwerk-Anwendung",25],["Kundenkommunikation",20],["Digitale Tools",10]],
-  g:[["KI-gestützte Entscheidung",30],["Komplexfallbearbeitung",25],["Prozesssteuerung & QS",20],["Kundenkommunikation",15],["Data Literacy",10]],
-  f:"Schadensbearbeitung wird durch Agentic AI fundamental transformiert. Manuelle Routinetätigkeiten werden durch KI-gestützte Entscheidungsprozesse abgelöst.",
-  sl:["Sachbearb.","Regelwerk","Kundenkommunik.","Dig. Tools","KI-Entscheid.","Komplexfall","Prozesssteuer.","Data Literacy"],
-  sv:[45,25,20,10,5,5,5,5],gv:[5,5,15,10,30,25,20,10],
+  t:[["Schadenfachliche Bewertung",35],["Regelwerk & Compliance",25],["Kundenkommunikation",20],["Fallsteuerung & Qualität",15],["Data Literacy & KI-Entscheidung",5]],
+  g:[["Schadenfachliche Bewertung",20],["Regelwerk & Compliance",15],["Kundenkommunikation",20],["Fallsteuerung & Qualität",20],["Data Literacy & KI-Entscheidung",25]],
+  d:[{k:"Schadenbild",h:"ESG- und Klimaschadenlagen werden komplexer",t:"Mehr Extremwetter- und Folgeschäden führen zu komplexeren Fällen, die tiefere Bewertung und Priorisierung brauchen."},
+   {k:"Technologie",h:"Bilderkennung automatisiert Standardprüfungen",t:"Foto- und Dokumentenanalysen übernehmen einfache Schadenprüfungen. Mitarbeitende fokussieren sich stärker auf Review und Freigabe."},
+   {k:"Betrugsabwehr",h:"Auffällige Muster müssen früher erkannt werden",t:"Mit mehr Automatisierung steigt der Bedarf an Monitoring, Modellkontrolle und Zusammenarbeit mit Analytics."},
+   {k:"Kundendruck",h:"Schnelle Regulierung wird zum Hygienefaktor",t:"Kunden erwarten sofortige Statusupdates und rasche Entscheidungen. Prozesssteuerung und empathische Kommunikation werden wichtiger."}],
+  f:"Auch 2030 bleiben die Kernskills relevant; der Schwerpunkt verschiebt sich von manueller Routinebearbeitung zu Steuerung, Qualität und KI-gestützter Entscheidung.",
+  sl:["Fachbewert.","Regelwerk","Kommunik.","Steuerung+QS","Data+KI"],
+  sv:[35,25,20,15,5],gv:[20,15,20,20,25],
   tt:[{id:"t1",l:"Schadensmeldungen prüfen & manuell erfassen",s:"~28% der Arbeitszeit",lk:["s1","s2"]},
-      {id:"t2",l:"Deckungsprüfung anhand Vertragsdaten",s:"~22% der Arbeitszeit",lk:["s1","s3"]},
-      {id:"t3",l:"Schadenshöhe kalkulieren & dokumentieren",s:"~20% der Arbeitszeit",lk:["s2","s4"]},
-      {id:"t4",l:"Mit Kunden, Werkstätten & Gutachtern korrespondieren",s:"~15% der Arbeitszeit",lk:["s3","s4"]},
-      {id:"t5",l:"Regelwerke & Tarifbedingungen anwenden",s:"~10% der Arbeitszeit",lk:["s1"]},
-      {id:"t6",l:"Auszahlungen anweisen & dokumentieren",s:"~5% der Arbeitszeit",lk:["s4"]}],
-  ts:[{id:"s1",l:"Sachbearbeitung & Regelwerk-Anwendung",s:"45% Skill-Mix",lk:["t1","t2","t5"]},
-      {id:"s2",l:"Versicherungsfachliche Bewertung",s:"25% Skill-Mix",lk:["t1","t3"]},
-      {id:"s3",l:"Kundenkommunikation Schadensfall",s:"20% Skill-Mix",lk:["t2","t4"]},
-      {id:"s4",l:"Digitale Tools & Bestandssysteme",s:"10% Skill-Mix",lk:["t3","t4","t6"]}],
-  ft:[{id:"t1f",l:"KI-gestützte Schadensentscheidungen reviewen & freigeben",s:"~25% der Arbeitszeit",lk:["s1f","s5f"]},
-      {id:"t2f",l:"Komplexfälle (Großschäden, Betrugsverdacht) bearbeiten",s:"~25% der Arbeitszeit",lk:["s2f","s5f"]},
-      {id:"t3f",l:"Schadensprozesse steuern & Qualität sichern",s:"~20% der Arbeitszeit",lk:["s3f","s5f"]},
-      {id:"t4f",l:"Empathische Kundenbetreuung in sensiblen Schadenslagen",s:"~15% der Arbeitszeit",lk:["s4f","s2f"]},
-      {id:"t5f",l:"Daten- & Modellqualität der Schaden-KI überwachen",s:"~10% der Arbeitszeit",lk:["s5f","s3f"]},
-      {id:"t6f",l:"Betrugsmuster identifizieren (gemeinsam mit Analytics)",s:"~5% der Arbeitszeit",lk:["s3f"]}],
-  fs:[{id:"s1f",l:"KI-gestützte Entscheidungsfindung",s:"30% Skill-Mix",lk:["t1f"]},
-      {id:"s2f",l:"Komplexfallbearbeitung & Versicherungsexpertise",s:"25% Skill-Mix",lk:["t2f","t4f"]},
-      {id:"s3f",l:"Prozesssteuerung & Qualitätssicherung",s:"20% Skill-Mix",lk:["t3f","t5f","t6f"]},
-      {id:"s4f",l:"Empathische Kundenkommunikation",s:"15% Skill-Mix",lk:["t4f"]},
-      {id:"s5f",l:"Data Literacy & Modell-Monitoring",s:"10% Skill-Mix",lk:["t1f","t2f","t3f","t5f"]}]
+    {id:"t2",l:"Deckungsprüfung anhand Vertragsdaten",s:"~22% der Arbeitszeit",lk:["s1","s2"]},
+    {id:"t3",l:"Schadenshöhe kalkulieren & dokumentieren",s:"~20% der Arbeitszeit",lk:["s1","s4"]},
+    {id:"t4",l:"Mit Kunden, Werkstätten & Gutachtern korrespondieren",s:"~15% der Arbeitszeit",lk:["s3"]},
+    {id:"t5",l:"Regelwerke & Tarifbedingungen anwenden",s:"~10% der Arbeitszeit",lk:["s2"]},
+    {id:"t6",l:"Auszahlungen anweisen & dokumentieren",s:"~5% der Arbeitszeit",lk:["s4","s5"]}],
+  ts:[{id:"s1",l:"Schadenfachliche Bewertung",s:"35% Skill-Mix",lk:["t1","t2","t3"]},
+    {id:"s2",l:"Regelwerk & Compliance",s:"25% Skill-Mix",lk:["t1","t2","t5"]},
+    {id:"s3",l:"Kundenkommunikation",s:"20% Skill-Mix",lk:["t4"]},
+    {id:"s4",l:"Fallsteuerung & Qualität",s:"15% Skill-Mix",lk:["t3","t6"]},
+    {id:"s5",l:"Data Literacy & KI-Entscheidung",s:"5% Skill-Mix",lk:["t6"]}],
+  ft:[{id:"t1f",l:"KI-gestützte Schadensentscheidungen reviewen & freigeben",s:"~25% der Arbeitszeit",lk:["s5f","s4f"]},
+    {id:"t2f",l:"Komplexfälle (Großschäden, Betrugsverdacht) bearbeiten",s:"~25% der Arbeitszeit",lk:["s1f","s2f"]},
+    {id:"t3f",l:"Schadensprozesse steuern & Qualität sichern",s:"~20% der Arbeitszeit",lk:["s4f","s5f"]},
+    {id:"t4f",l:"Empathische Kundenbetreuung in sensiblen Schadenslagen",s:"~15% der Arbeitszeit",lk:["s3f","s1f"]},
+    {id:"t5f",l:"Daten- & Modellqualität der Schaden-KI überwachen",s:"~10% der Arbeitszeit",lk:["s5f","s4f"]},
+    {id:"t6f",l:"Betrugsmuster identifizieren (gemeinsam mit Analytics)",s:"~5% der Arbeitszeit",lk:["s5f","s2f"]}],
+  fs:[{id:"s1f",l:"Schadenfachliche Bewertung",s:"20% Skill-Mix",lk:["t2f","t4f"]},
+    {id:"s2f",l:"Regelwerk & Compliance",s:"15% Skill-Mix",lk:["t2f","t6f"]},
+    {id:"s3f",l:"Kundenkommunikation",s:"20% Skill-Mix",lk:["t4f"]},
+    {id:"s4f",l:"Fallsteuerung & Qualität",s:"20% Skill-Mix",lk:["t1f","t3f","t5f"]},
+    {id:"s5f",l:"Data Literacy & KI-Entscheidung",s:"25% Skill-Mix",lk:["t1f","t3f","t5f","t6f"]}]
  },
  {id:"hr",n:"HR",w:1,fte:280,z:250,a:22,
   sub:"280 FTE aktuell → 250 FTE Zielbild",
-  t:[["Administration & Payroll",35],["Recruiting",25],["HR-Beratung",25],["Reporting",15]],
-  g:[["People Analytics",30],["Strateg. HR-Beratung",25],["Change & Transformation",20],["KI-Recruiting",15],["Autom. Admin",10]],
-  f:"HR entwickelt sich zur strategischen Funktion mit starkem Analytics-Fokus. Routineadministration wird weitgehend automatisiert.",
-  sl:["Administration","Recruiting","HR-Beratung","Reporting","People Analytics","Change Mgmt.","KI-Recruiting","Strateg. Berat."],
-  sv:[35,25,25,15,5,5,5,5],gv:[5,10,15,5,30,20,15,25],
+  t:[["HR-Administration & Prozesse",35],["Recruiting & Talentdiagnostik",25],["HR-Beratung & Arbeitsrecht",25],["Analytics & Reporting",10],["Change & Transformation",5]],
+  g:[["HR-Administration & Prozesse",15],["Recruiting & Talentdiagnostik",15],["HR-Beratung & Arbeitsrecht",25],["Analytics & Reporting",25],["Change & Transformation",20]],
+  d:[{k:"Demografie",h:"Engpässe und Nachfolgefragen nehmen zu",t:"Weniger verfügbare Talente und mehr Ruhestandswellen erfordern strategische Workforce-Steuerung statt reiner Administration."},
+   {k:"Transformation",h:"Organisationen verändern Rollen und Skillprofile schneller",t:"HR muss Führungskräfte aktiv durch Umbau, Reskilling und Veränderungsprozesse begleiten."},
+   {k:"Technologie",h:"KI verändert Recruiting und Self-Services",t:"Sourcing, Screening und administrative HR-Prozesse werden teilautomatisiert. Dadurch steigt der Bedarf an Steuerung und Datenkompetenz."},
+   {k:"Steuerung",h:"People Analytics wird entscheidungsrelevant",t:"Personelle Risiken, Fluktuation und Skill-Gaps müssen datenbasiert antizipiert und mit Geschäftszielen verknüpft werden."}],
+  f:"Die fünf Kernskills bleiben stabil, aber Gewichte wandern von Administration zu Analytics, Beratung und Transformationsbegleitung.",
+  sl:["HR-Admin","Recruiting","Beratung","Analytics","Change"],
+  sv:[35,25,25,10,5],gv:[15,15,25,25,20],
   tt:[{id:"t1",l:"Personaladministration & Payroll-Vorbereitung",s:"~35% der Arbeitszeit",lk:["s1","s4"]},
-      {id:"t2",l:"Stellenausschreibungen formulieren & Kandidaten sichten",s:"~25% der Arbeitszeit",lk:["s2"]},
-      {id:"t3",l:"Mitarbeitende beraten (Arbeitsrecht, Benefits, Karriere)",s:"~25% der Arbeitszeit",lk:["s3"]},
-      {id:"t4",l:"HR-Reporting & Kennzahlen erstellen",s:"~15% der Arbeitszeit",lk:["s4","s3"]}],
-  ts:[{id:"s1",l:"Administration & Prozessausführung",s:"35% Skill-Mix",lk:["t1"]},
-      {id:"s2",l:"Recruiting & Eignungsdiagnostik",s:"25% Skill-Mix",lk:["t2"]},
-      {id:"s3",l:"HR-Beratung & Arbeitsrecht",s:"25% Skill-Mix",lk:["t3","t4"]},
-      {id:"s4",l:"Reporting & Datenpflege",s:"15% Skill-Mix",lk:["t1","t4"]}],
-  ft:[{id:"t1f",l:"People-Analytics-Auswertungen interpretieren & Handlungsempfehlungen ableiten",s:"~30% der Arbeitszeit",lk:["s1f","s5f"]},
-      {id:"t2f",l:"Strategische HR-Beratung von Führungskräften bei Transformation",s:"~25% der Arbeitszeit",lk:["s2f"]},
-      {id:"t3f",l:"Change-Maßnahmen begleiten & Widerstand managen",s:"~20% der Arbeitszeit",lk:["s3f"]},
-      {id:"t4f",l:"KI-gestütztes Recruiting steuern & Candidate Experience gestalten",s:"~15% der Arbeitszeit",lk:["s4f","s1f"]},
-      {id:"t5f",l:"Automatisierte HR-Prozesse überwachen & optimieren",s:"~10% der Arbeitszeit",lk:["s5f"]}],
-  fs:[{id:"s1f",l:"People Analytics & Dateninterpretation",s:"30% Skill-Mix",lk:["t1f","t4f"]},
-      {id:"s2f",l:"Strategische HR-Beratung",s:"25% Skill-Mix",lk:["t2f"]},
-      {id:"s3f",l:"Change & Transformation Management",s:"20% Skill-Mix",lk:["t3f"]},
-      {id:"s4f",l:"KI-gestütztes Recruiting",s:"15% Skill-Mix",lk:["t4f"]},
-      {id:"s5f",l:"HR-Prozessautomatisierung",s:"10% Skill-Mix",lk:["t5f"]}]
+    {id:"t2",l:"Stellenausschreibungen formulieren & Kandidaten sichten",s:"~25% der Arbeitszeit",lk:["s2"]},
+    {id:"t3",l:"Mitarbeitende beraten (Arbeitsrecht, Benefits, Karriere)",s:"~25% der Arbeitszeit",lk:["s3"]},
+    {id:"t4",l:"HR-Reporting & Kennzahlen erstellen",s:"~15% der Arbeitszeit",lk:["s4","s5"]}],
+  ts:[{id:"s1",l:"HR-Administration & Prozesse",s:"35% Skill-Mix",lk:["t1"]},
+    {id:"s2",l:"Recruiting & Talentdiagnostik",s:"25% Skill-Mix",lk:["t2"]},
+    {id:"s3",l:"HR-Beratung & Arbeitsrecht",s:"25% Skill-Mix",lk:["t3"]},
+    {id:"s4",l:"Analytics & Reporting",s:"10% Skill-Mix",lk:["t1","t4"]},
+    {id:"s5",l:"Change & Transformation",s:"5% Skill-Mix",lk:["t4"]}],
+  ft:[{id:"t1f",l:"People-Analytics-Auswertungen interpretieren & Handlungsempfehlungen ableiten",s:"~30% der Arbeitszeit",lk:["s4f","s5f"]},
+    {id:"t2f",l:"Strategische HR-Beratung von Führungskräften bei Transformation",s:"~25% der Arbeitszeit",lk:["s3f","s5f"]},
+    {id:"t3f",l:"Change-Maßnahmen begleiten & Widerstand managen",s:"~20% der Arbeitszeit",lk:["s5f"]},
+    {id:"t4f",l:"KI-gestütztes Recruiting steuern & Candidate Experience gestalten",s:"~15% der Arbeitszeit",lk:["s2f","s4f"]},
+    {id:"t5f",l:"Automatisierte HR-Prozesse überwachen & optimieren",s:"~10% der Arbeitszeit",lk:["s1f","s4f"]}],
+  fs:[{id:"s1f",l:"HR-Administration & Prozesse",s:"15% Skill-Mix",lk:["t5f"]},
+    {id:"s2f",l:"Recruiting & Talentdiagnostik",s:"15% Skill-Mix",lk:["t4f"]},
+    {id:"s3f",l:"HR-Beratung & Arbeitsrecht",s:"25% Skill-Mix",lk:["t2f"]},
+    {id:"s4f",l:"Analytics & Reporting",s:"25% Skill-Mix",lk:["t1f","t4f","t5f"]},
+    {id:"s5f",l:"Change & Transformation",s:"20% Skill-Mix",lk:["t1f","t2f","t3f"]}]
  },
  {id:"op-support",n:"Operativer Support",w:1,fte:420,z:320,a:38,
   sub:"420 FTE aktuell → 320 FTE Zielbild",
-  t:[["Manuelle Datenpflege",40],["Postbearbeitung",25],["Interne Koordination",20],["Systembetreuung",15]],
-  g:[["Prozessautomatisierung",35],["Systemsteuerung",25],["Qualitätssicherung",20],["Interne Koordination",10],["Data Literacy",10]],
-  f:"Der operative Support wandelt sich von manuellen Tätigkeiten hin zur aktiven Steuerung automatisierter Prozesse.",
-  sl:["Datenpflege","Postbearb.","Koordination","Systembetreu.","Prozessautom.","Systemsteuer.","QS","Data Literacy"],
-  sv:[40,25,20,15,5,5,5,5],gv:[5,5,10,15,35,25,20,10],
+  t:[["Daten- & Dokumentenbearbeitung",40],["Koordination & Service",25],["Systembedienung & Monitoring",20],["Qualitätssicherung",10],["Prozessautomatisierung & Analyse",5]],
+  g:[["Daten- & Dokumentenbearbeitung",15],["Koordination & Service",15],["Systembedienung & Monitoring",20],["Qualitätssicherung",20],["Prozessautomatisierung & Analyse",30]],
+  d:[{k:"Effizienz",h:"Manuelle Backoffice-Prozesse sind zu langsam und fehleranfällig",t:"Hohe Volumina und Kostendruck erzwingen mehr Dunkelverarbeitung, Standardisierung und Ausnahmebehandlung statt manueller Pflege."},
+   {k:"Technologie",h:"Workflow-, OCR- und RPA-Lösungen übernehmen Routinen",t:"Posteingang, Datenübertragungen und Standardprüfungen werden automatisiert. Die Rolle verlagert sich zur Überwachung der Prozessketten."},
+   {k:"Qualität",h:"Fehlerkosten werden transparenter",t:"Mit mehr End-to-End-Steuerung steigt die Bedeutung von QS, Monitoring und sauberer Datenanalyse an den Ausnahmestellen."},
+   {k:"Steuerbarkeit",h:"Fachbereiche brauchen stabile Prozess- und System-Schnittstellen",t:"Operativer Support muss Eskalationen, Batch-Jobs und Prozessstabilität aktiv steuern statt nur Tickets weiterzureichen."}],
+  f:"Die gleichen fünf Skills bleiben relevant; der Schwerpunkt wandert von manueller Bearbeitung zu Qualität, Monitoring und Prozessautomatisierung.",
+  sl:["Doku-Bearb.","Koordination","Monitoring","QS","Autom.+Analyse"],
+  sv:[40,25,20,10,5],gv:[15,15,20,20,30],
   tt:[{id:"t1",l:"Stammdaten manuell erfassen & pflegen",s:"~40% der Arbeitszeit",lk:["s1","s3"]},
-      {id:"t2",l:"Eingehende Post scannen, indexieren & weiterleiten",s:"~25% der Arbeitszeit",lk:["s2"]},
-      {id:"t3",l:"Interne Anfragen koordinieren & weiterleiten",s:"~20% der Arbeitszeit",lk:["s4"]},
-      {id:"t4",l:"Systemstörungen melden & Basisbehebung",s:"~15% der Arbeitszeit",lk:["s3","s4"]}],
-  ts:[{id:"s1",l:"Manuelle Dateneingabe & -pflege",s:"40% Skill-Mix",lk:["t1"]},
-      {id:"s2",l:"Postbearbeitung & Dokumentenmanagement",s:"25% Skill-Mix",lk:["t2"]},
-      {id:"s3",l:"Systemnavigation & Fehlererfassung",s:"20% Skill-Mix",lk:["t1","t4"]},
-      {id:"s4",l:"Interne Koordination & Kommunikation",s:"15% Skill-Mix",lk:["t3","t4"]}],
-  ft:[{id:"t1f",l:"Automatisierte Datenprozesse überwachen & Ausnahmen behandeln",s:"~35% der Arbeitszeit",lk:["s1f","s5f"]},
-      {id:"t2f",l:"Systemperformance & Batch-Jobs steuern",s:"~25% der Arbeitszeit",lk:["s2f"]},
-      {id:"t3f",l:"Qualitätsprüfungen automatisierter Outputs durchführen",s:"~20% der Arbeitszeit",lk:["s3f","s5f"]},
-      {id:"t4f",l:"Interne Schnittstellen & Eskalationen koordinieren",s:"~10% der Arbeitszeit",lk:["s4f"]},
-      {id:"t5f",l:"Prozessdaten analysieren & Verbesserungen vorschlagen",s:"~10% der Arbeitszeit",lk:["s5f","s1f"]}],
-  fs:[{id:"s1f",l:"Prozessautomatisierung & RPA-Steuerung",s:"35% Skill-Mix",lk:["t1f","t5f"]},
-      {id:"s2f",l:"Systemsteuerung & Monitoring",s:"25% Skill-Mix",lk:["t2f"]},
-      {id:"s3f",l:"Qualitätssicherung & Ausnahmebehandlung",s:"20% Skill-Mix",lk:["t3f"]},
-      {id:"s4f",l:"Interne Koordination & Kommunikation",s:"10% Skill-Mix",lk:["t4f"]},
-      {id:"s5f",l:"Data Literacy & Prozessanalyse",s:"10% Skill-Mix",lk:["t1f","t3f","t5f"]}]
+    {id:"t2",l:"Eingehende Post scannen, indexieren & weiterleiten",s:"~25% der Arbeitszeit",lk:["s1","s2"]},
+    {id:"t3",l:"Interne Anfragen koordinieren & weiterleiten",s:"~20% der Arbeitszeit",lk:["s2"]},
+    {id:"t4",l:"Systemstörungen melden & Basisbehebung",s:"~15% der Arbeitszeit",lk:["s3","s4"]}],
+  ts:[{id:"s1",l:"Daten- & Dokumentenbearbeitung",s:"40% Skill-Mix",lk:["t1","t2"]},
+    {id:"s2",l:"Koordination & Service",s:"25% Skill-Mix",lk:["t2","t3"]},
+    {id:"s3",l:"Systembedienung & Monitoring",s:"20% Skill-Mix",lk:["t1","t4"]},
+    {id:"s4",l:"Qualitätssicherung",s:"10% Skill-Mix",lk:["t4"]},
+    {id:"s5",l:"Prozessautomatisierung & Analyse",s:"5% Skill-Mix",lk:["t4"]}],
+  ft:[{id:"t1f",l:"Automatisierte Datenprozesse überwachen & Ausnahmen behandeln",s:"~35% der Arbeitszeit",lk:["s3f","s4f"]},
+    {id:"t2f",l:"Systemperformance & Batch-Jobs steuern",s:"~25% der Arbeitszeit",lk:["s3f","s5f"]},
+    {id:"t3f",l:"Qualitätsprüfungen automatisierter Outputs durchführen",s:"~20% der Arbeitszeit",lk:["s4f","s5f"]},
+    {id:"t4f",l:"Interne Schnittstellen & Eskalationen koordinieren",s:"~10% der Arbeitszeit",lk:["s2f"]},
+    {id:"t5f",l:"Prozessdaten analysieren & Verbesserungen vorschlagen",s:"~10% der Arbeitszeit",lk:["s5f"]}],
+  fs:[{id:"s1f",l:"Daten- & Dokumentenbearbeitung",s:"15% Skill-Mix",lk:["t1f"]},
+    {id:"s2f",l:"Koordination & Service",s:"15% Skill-Mix",lk:["t4f"]},
+    {id:"s3f",l:"Systembedienung & Monitoring",s:"20% Skill-Mix",lk:["t1f","t2f"]},
+    {id:"s4f",l:"Qualitätssicherung",s:"20% Skill-Mix",lk:["t1f","t3f"]},
+    {id:"s5f",l:"Prozessautomatisierung & Analyse",s:"30% Skill-Mix",lk:["t2f","t3f","t5f"]}]
  }
 ];
 
 let bpCur = BPD[0];
+let bpSpiderHover = -1;
 
 const bpSbar=(l,v,cls,col)=>`<div class="sbar"><div class="sbar-head"><span>${l}</span><span style="color:${col}">${v}%</span></div><div class="sbar-track"><div class="sbar-fill ${cls}" style="width:${v}%"></div></div></div>`;
 
@@ -720,6 +887,21 @@ function bpMapBlock(tasks,skills,svgId,cls,lbl,thd,shd){
     </div></div>`;
 }
 
+function bpDriverBlock(drivers){
+  return`<div class="driver-block">
+    <div class="driver-head">
+      <div>
+        <span class="driver-kicker">Treiber-Hypothesen</span>
+        <h5>Warum ein Zielbild nötig ist</h5>
+      </div>
+      <p>Illustrative Veränderungstreiber, die erklären, warum der heutige Skill-Mix die künftigen Anforderungen nicht mehr ausreichend abdeckt.</p>
+    </div>
+    <div class="driver-grid">
+      ${drivers.map(x=>`<div class="driver-card"><span class="driver-tag">${x.k}</span><h6>${x.h}</h6><p>${x.t}</p></div>`).join('')}
+    </div>
+  </div>`;
+}
+
 function bpRender(){
   const f=bpCur,d=f.z-f.fte,dc=d>0?'#059669':'#FD5108',ds=d>0?`+${d}`:d;
   document.getElementById('bp-sel').innerHTML=BPD.map(x=>`<button class="fbtn${x.id===f.id?' active':''}" onclick="bpPick('${x.id}')">${x.n} (Welle ${x.w})</button>`).join('');
@@ -734,6 +916,7 @@ function bpRender(){
       <div style="text-align:center;min-width:80px"><div class="bp-score">${f.a}%</div><div style="font-size:.65rem;color:#666;margin-top:4px">Autom.-Potenzial</div></div>
     </div>
     ${bpMapBlock(f.tt,f.ts,'svg-today','today','Stand heute (2026)','Tätigkeiten heute','Skills heute')}
+    ${bpDriverBlock(f.d)}
     ${bpMapBlock(f.ft,f.fs,'svg-future','future','Zielbild 2030','Tätigkeiten 2030','Skills 2030')}
     <div class="skillmix-block">
       <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:#666;margin-bottom:1rem">Aggregierter Skill-Mix: Heute vs. Zielbild 2030</div>
@@ -745,6 +928,7 @@ function bpRender(){
     <div class="bp-foot">${f.f}</div>
   </div>`;
   bpDrawSpider();
+  bpBindSpiderHover();
   bpSetupHover();
   requestAnimationFrame(()=>requestAnimationFrame(bpDrawMappings));
 }
@@ -795,24 +979,88 @@ function bpSetupHover(){
 
 function bpDrawSpider(){
   const f=bpCur,cv=document.getElementById('spiderCv'),ctx=cv.getContext('2d');
-  const cx=180,cy=180,R=140,n=f.sl.length,mx=50;
-  ctx.clearRect(0,0,360,360);
+  const W=cv.width,H=cv.height,cx=W/2,cy=H/2,R=Math.min(W,H)*0.36,n=f.sl.length,mx=50;
+  ctx.clearRect(0,0,W,H);
   const pt=(i,r)=>{const a=(2*Math.PI*i/n)-Math.PI/2;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];};
   for(let r=1;r<=5;r++){ctx.beginPath();for(let i=0;i<n;i++){const[x,y]=pt(i,r/5*R);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.strokeStyle='#ddd';ctx.lineWidth=1;ctx.stroke();}
   for(let i=0;i<n;i++){const[x,y]=pt(i,R);ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(x,y);ctx.strokeStyle='#ddd';ctx.lineWidth=1;ctx.stroke();}
-  ctx.font='10px Arial';ctx.fillStyle='#666';ctx.textAlign='center';ctx.textBaseline='middle';
-  for(let i=0;i<n;i++){const[x,y]=pt(i,R+18);ctx.fillText(f.sl[i],x,y);}
+  if(bpSpiderHover>=0){
+    const [hx,hy]=pt(bpSpiderHover,R);
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(hx,hy);ctx.strokeStyle='#FD5108';ctx.lineWidth=2;ctx.stroke();
+  }
+  ctx.font='11px Arial';ctx.fillStyle='#666';ctx.textBaseline='middle';ctx.textAlign='center';
+  for(let i=0;i<n;i++){
+    const lbl=f.sl[i];
+    const [lx,ly]=pt(i,R+36);
+    const tw=ctx.measureText(lbl).width;
+    const x=Math.max((tw/2)+8,Math.min(W-(tw/2)-8,lx));
+    const y=Math.max(14,Math.min(H-14,ly));
+    ctx.font=(i===bpSpiderHover?'700 11px Arial':'11px Arial');
+    ctx.fillStyle=(i===bpSpiderHover?'#1a1a1a':'#666');
+    ctx.fillText(lbl,x,y);
+  }
   const poly=(vals,stroke,fill)=>{ctx.beginPath();for(let i=0;i<n;i++){const[x,y]=pt(i,vals[i]/mx*R);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();};
   poly(f.sv,'#666','rgba(102,102,102,0.15)');
   poly(f.gv,'#FD5108','rgba(253,81,8,0.15)');
-  document.getElementById('legSkills').innerHTML=f.sl.map((l,i)=>`<div style="font-size:.75rem;color:#666;display:flex;justify-content:space-between;gap:1rem"><span>${l}</span><span style="white-space:nowrap"><span style="color:#666;font-weight:700">${f.sv[i]}%</span> → <span style="color:#FD5108;font-weight:700">${f.gv[i]}%</span></span></div>`).join('');
+  if(bpSpiderHover>=0){
+    const [tx,ty]=pt(bpSpiderHover,f.sv[bpSpiderHover]/mx*R);
+    const [ox,oy]=pt(bpSpiderHover,f.gv[bpSpiderHover]/mx*R);
+    ctx.beginPath();ctx.arc(tx,ty,4,0,2*Math.PI);ctx.fillStyle='#666';ctx.fill();
+    ctx.beginPath();ctx.arc(ox,oy,4,0,2*Math.PI);ctx.fillStyle='#FD5108';ctx.fill();
+  }
+  document.getElementById('legSkills').innerHTML=f.sl.map((l,i)=>`<div style="font-size:.75rem;color:#666;display:flex;justify-content:space-between;gap:1rem;padding:.12rem .35rem;border-radius:3px;${i===bpSpiderHover?'background:#fff3ea;color:#1a1a1a':''}"><span>${l}</span><span style="white-space:nowrap"><span style="color:#666;font-weight:700">${f.sv[i]}%</span> → <span style="color:#FD5108;font-weight:700">${f.gv[i]}%</span></span></div>`).join('');
+}
+
+function bpBindSpiderHover(){
+  const cv=document.getElementById('spiderCv');
+  const tip=document.getElementById('spiderTip');
+  if(!cv||!tip||cv.dataset.hoverBound==='1') return;
+  cv.dataset.hoverBound='1';
+  const getIdx=(e)=>{
+    const r=cv.getBoundingClientRect();
+    const x=e.clientX-r.left, y=e.clientY-r.top;
+    const cx=cv.width/2, cy=cv.height/2, R=Math.min(cv.width,cv.height)*0.36;
+    const dx=x-cx, dy=y-cy, dist=Math.hypot(dx,dy), n=bpCur.sl.length;
+    if(dist<20||dist>R+45) return -1;
+    let ang=Math.atan2(dy,dx)+Math.PI/2;
+    if(ang<0) ang+=Math.PI*2;
+    return Math.round(ang/(Math.PI*2/n))%n;
+  };
+  cv.addEventListener('mousemove',(e)=>{
+    const idx=getIdx(e);
+    bpSpiderHover=idx;
+    bpDrawSpider();
+    if(idx<0){tip.style.display='none';return;}
+    const wrap=cv.parentElement.getBoundingClientRect();
+    const x=e.clientX-wrap.left+14, y=e.clientY-wrap.top+14;
+    tip.innerHTML=`<strong>${bpCur.sl[idx]}</strong><div><span style="color:#666;font-weight:700">Heute: ${bpCur.sv[idx]}%</span></div><div><span style="color:#FD5108;font-weight:700">2030: ${bpCur.gv[idx]}%</span></div>`;
+    tip.style.left=Math.min(x,wrap.width-170)+'px';
+    tip.style.top=Math.min(y,wrap.height-70)+'px';
+    tip.style.display='block';
+  });
+  cv.addEventListener('mouseleave',()=>{
+    bpSpiderHover=-1;
+    tip.style.display='none';
+    bpDrawSpider();
+  });
 }
 
 function bpPick(id){bpCur=BPD.find(f=>f.id===id);bpRender();}
 window.addEventListener('load',()=>{ bpRender(); });
 window.addEventListener('resize',()=>requestAnimationFrame(bpDrawMappings));
 </script>
-</body>
-</html>
+
+<script>
+(function(){
+  var btn=document.getElementById('toggleSrc');
+  if(!btn) return;
+  btn.addEventListener('click',function(){
+    document.body.classList.toggle('hide-src');
+    btn.textContent = document.body.classList.contains('hide-src')
+      ? 'Hinweisboxen einblenden' : 'Hinweisboxen ausblenden';
+  });
+})();
+</script>
+
 </body>
 </html>
